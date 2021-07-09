@@ -103,25 +103,27 @@ p {
     margin: 0.5em 3em;
     border-bottom: 0.2em solid #E0E0E0;
     height: 5em;
+    position: relative;
     
+
     .escalator {
-      left: calc(0%);
+      left: calc(0 * (100% - 2em));
     }
 
     .elevator {
-      left: calc(20% - 2em);
+      left: calc(0.1 * (100% - 2em));
     }
 
     .icon-train {
-      left: calc(100% - 6em)
+      left: calc(1 * (100% - 2em));
     }
 
     .stairs {
-      left: calc(50% - 8em);
+      left: calc(0.5 * (100% - 2em));
     }
 
     svg {
-      position: relative;
+      position: absolute;
       height: 2em;
       width: 2em;
       color: #004D55;

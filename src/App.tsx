@@ -92,10 +92,10 @@ const Result = ({ startStation, endStation }: ResultProps) => {
               <p>Train towards Jurong East</p>
             </div>
             <div className="platform-info">
-              <GrEscalator className="escalator" />
-              <GrElevator className="elevator" />
-              <GrTrain className="icon-train" />
-              <GiStairs className="stairs" />
+              <GrEscalator className="escalator" style={{ left: 'calc(0.75 * (100% - 2em))' }} />
+              <GrElevator className="elevator" style={{ left: 'calc(0.3 * (100% - 2em))' }} />
+              <GrTrain className="icon-train" style={{ left: 'calc(0.2 * (100% - 2em))' }} />
+              <GiStairs className="stairs" style={{ left: 'calc(0.1 * (100% - 2em))' }} />
             </div>
             <div className="train-info">
               <BsCaretLeftFill className="direction-tri" />

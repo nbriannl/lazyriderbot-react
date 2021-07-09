@@ -1,0 +1,70 @@
+import { Dispatch, ReactElement, SetStateAction, useState } from 'react';
+import './App.css';
+
+interface PickStartStationProps {
+  setStation: Dispatch<SetStateAction<string>>;
+}
+
+const PickStartStation = ({ setStation }: PickStartStationProps) => {
+  const stations = ['Bishan', 'Orchard', 'Somerset'];
+
+  const renderOption = (station: string) => {
+    return <option key={station} value={station} />;
+  }
+
+  return (
+    <>
+      <input list="start-stations" name="start-stations" id="start-stations" onChange={e => console.log(e.target.value)} />
+      <datalist id="start-stations">
+        {stations.map(renderOption)}
+      </datalist>
+    </>
+  );
+}
+
+interface PickEndStationProps {
+  setStation: Dispatch<SetStateAction<string>>;
+}
+
+const PickEndStation = ({ setStation }: PickEndStationProps) => {
+  const stations = ['Yishun', 'Sembawang', 'Canberra'];
+
+  const renderOption = (station: string) => {
+    return <option key={station} value={station} />;
+  }
+
+  return (
+    <>
+      <input list="end-stations" name="end-stations" id="end-stations" onChange={e => console.log(e.target.value)} />
+      <datalist id="end-stations">
+        {stations.map(renderOption)}
+      </datalist>
+    </>
+  );
+}
+
+
+interface ResultProps {
+  startStation: string;
+  endStation: string;
+}
+const Result = ({ startStation, endStation }: ResultProps) => {
+  return (<>
+    {`${startStation} to ${endStation}`}
+  </>)
+}
+
+const App = (): ReactElement => {
+  const [startStation, setStartStation] = useState('');
+  const [endStation, setEndStation] = useState('');
+
+  return (
+    <div className="App">
+      <PickStartStation setStation={setStartStation}></PickStartStation>
+      <PickEndStation setStation={setEndStation}></PickEndStation>
+      {(startStation !== '' && endStation !== '') && <Result startStation={startStation} endStation={endStation}></Result>}
+    </div>
+  );
+}
+
+export default App;

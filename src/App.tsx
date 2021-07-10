@@ -1,6 +1,6 @@
 import { Dispatch, ReactElement, SetStateAction, useState } from 'react';
 import './styles/App.scss';
-import MainDisplay from './components/MainDisplay';
+import MainDisplay from './components/MainDisplay/index';
 
 interface PickStartStationProps {
   setStation: Dispatch<SetStateAction<string>>;

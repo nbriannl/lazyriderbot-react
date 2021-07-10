@@ -30,16 +30,20 @@ p {
   font-family: 'Merriweather Sans', sans-serif;
 }
 
-.root {
+#root {
   height: 100vh;
 }
 
-.display {  
-  .content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+.App {
+  height: 100%;
+}
+
+.result { 
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   p {
      margin: 0;
@@ -134,16 +138,15 @@ p {
   }
 
   // Normal
+  .main-info.landscape {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 1em 0.5em 1em;
+    width: 100%;
+    flex-grow: 1;
+    justify-content: center;
 
-  @media screen and (min-width: 376px) {
-    .main-info {
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      padding: 0.5em 1em 0 1em;
-      width: 100%;
-    }
-  
     .platform-info {
       box-sizing: border-box;
       background-color: #F2F2F2;
@@ -152,19 +155,6 @@ p {
       height: 5em;
       position: relative;
       
-  
-      .elevator {
-        left: calc(0.1 * (100% - 2em));
-      }
-  
-      .icon-train {
-        left: calc(1 * (100% - 2em));
-      }
-  
-      .stairs {
-        left: calc(0.5 * (100% - 2em));
-      }
-  
       svg {
         position: absolute;
         height: 2em;
@@ -240,37 +230,25 @@ p {
       width: 100%;
     }
   }
-
-  @media screen and (max-width: 375px) {
-    .main-info {
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: row-reverse;
-      align-items: stretch;
-      background: lightblue; 
-      // flex-grow: 1;
-    }
   
+    
+  .main-info.portrait {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: stretch;
+    padding: 1em 1em 1em 1em;
+    flex-grow: 1;
+    justify-content: center;
+
     .platform-info {
       box-sizing: border-box;
       background-color: #F2F2F2;
-      margin: 0.5em 3em;
-      border-bottom: 0.2em solid #E0E0E0;
+      border-left: 0.2em solid #E0E0E0;
+      border-right: 0.2em solid #E0E0E0;
+      margin-top: 1.5em;
       width: 5em;
       position: relative;
-      
-  
-      .elevator {
-        left: calc(0.1 * (100% - 2em));
-      }
-  
-      .icon-train {
-        left: calc(1 * (100% - 2em));
-      }
-  
-      .stairs {
-        left: calc(0.5 * (100% - 2em));
-      }
   
       svg {
         position: absolute;
@@ -290,15 +268,21 @@ p {
       justify-content: center;
       background-color: #F2F2F2;
       border-right: 0.2em solid #BDBDBD;
-      margin: 0 1.5em 0 1.5em;
+      margin-top: 1.5em;
       border-radius: 0 0 0 0;
       color: #919191;
+      width: 3em;
+
+      p {
+        transform: rotate(90deg);
+        white-space: nowrap;
+      }
     }
   
     .train-info {
       display: flex;
-      flex-direction: row;
-      align-items: flex-end;
+      flex-direction: column;
+      align-items: center;
       margin: 0 1.5em 0 0em;
   
       svg {
@@ -312,6 +296,7 @@ p {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      height: 100%;
     }
   
     .carraige {
@@ -321,8 +306,9 @@ p {
       background-color: #BDBDBD;
       padding: 0;
       margin: 0.2em;
-      border-bottom: 0.2em solid #4F4F4F;
-      width: 3em
+      border-right: 0.2em solid #4F4F4F;
+      width: 3em;
+      height: 100%
     }
   
     .door {
@@ -332,6 +318,6 @@ p {
       background-color: #585858;
       margin: 3px 2px 0 2px;
     }
-  }  
+  }
 }
 

@@ -39,27 +39,27 @@ p {
   height: 100%;
 }
 
-.result { 
-  height: 100%;
+.result {
+  align-items: center;
 
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: column; 
+  height: 100%;
 
   p {
      margin: 0;
   }
 
   .top {
+    align-items: stretch;
     background-color: #004D55;
-    font-size: 1.4em;
-    color: #fff;
-    width: 100%;
-    text-align: center;
     border-bottom: 5px solid #EF3829;
+    color: #fff;
     display: flex;
     flex-direction: row;
-    align-items: stretch;
+    font-size: 1.4em;
+    text-align: center;
+    width: 100%;
 
     .station-info {
       width: 100%;
@@ -70,45 +70,45 @@ p {
     }
 
     .rotate-btn {
+      align-items: center;
       display: flex;
       justify-content: center;
-      align-items: center;
       padding: 0 0.5em;
 
       svg {
-        width: 1.5em;
         height: 1.5em;
+        width: 1.5em;
       }
     }
   }
 
   .med {
-    display: flex;
-    flex-direction: row;
+    align-items: stretch;
     background-color: #004D55;
     color: #fff;
+    display: flex;
+    flex-direction: row;
     width: 100%;
-    align-items: stretch;
   }
 
   .door-opening-info {
+    align-items: center;
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: center;
     width: 100%;
 
     svg {
-      height: 3em;
-      width: 3em;
-      transform: scaleY(-1);
       color: #24F178;
+      height: 3em;
+      transform: scaleY(-1);
+      width: 3em;
     }
   }
 
   .door-opening-info-text {
-    text-align: center;
     padding: 0 1em;
+    text-align: center;
 
     .sub {
       font-size: 1em;
@@ -121,12 +121,12 @@ p {
   }
 
   .door-number {
-    display: flex;
-    flex-flow: column;  
-    text-align: center;
-    justify-content: center;
     background-color: #327177;
-    padding: 0.5em 1em;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    padding: 0.5em 1em;  
+    text-align: center;
 
     .sub {
       font-size: 1em;

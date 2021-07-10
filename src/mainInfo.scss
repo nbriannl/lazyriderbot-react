@@ -94,6 +94,7 @@
     .carraige {
       border-bottom: 0.2em solid #4F4F4F;
       flex-direction: row;
+      margin: 0 0.2em 0 0.2em;
       width: 100%;
   
       &:first-child {
@@ -151,7 +152,16 @@
       border-right: 0.2em solid #4F4F4F;
       flex-direction: column;
       height: 100%;
-      width: 3em
+      margin: 0.2em 0;
+      width: 3em;
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   
     .door {

@@ -24,6 +24,14 @@
     }
   }
 
+  .other-train {
+    align-items: center;
+    background-color: #F2F2F2;
+    color: #919191;
+    display: flex;
+    justify-content: center;
+  }
+
   &.landscape {
     flex-direction: column;
     width: 100%;
@@ -35,14 +43,9 @@
     }
 
     .other-train {
-      align-items: center;
-      background-color: #F2F2F2;
       border-bottom: 0.2em solid #BDBDBD;
       border-radius: 2em 2em 0 0;
-      color: #919191;
-      display: flex;
       height: 2em;
-      justify-content: center;
       margin: 0 1.5em 0 1.5em;
     }
   
@@ -110,13 +113,8 @@
     }
 
     .other-train {
-      align-items: center;
-      background-color: #F2F2F2;
       border-radius: 0 0 0 0;
       border-right: 0.2em solid #BDBDBD;
-      color: #919191;
-      display: flex;
-      justify-content: center;
       margin-top: 1.5em;
       width: 3em;
   

@@ -313,10 +313,11 @@ p {
   
     .door {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       justify-content: space-between;
       background-color: #585858;
-      margin: 3px 2px 0 2px;
+      margin: 2px 0px 2px 4px;
+      height: 100%;
     }
   }
 }

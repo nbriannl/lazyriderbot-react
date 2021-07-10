@@ -52,7 +52,7 @@ const MainDisplay = ({ endStation }: Props): ReactElement => {
   const numDoors = 4;
   const isDoorOpeningSameSide = true;
   // 0-index
-  const best = 20;
+  const best = 19;
 
   const [isLandscape, setIsLandscape] = useState(true);
 
@@ -143,7 +143,7 @@ const MainDisplay = ({ endStation }: Props): ReactElement => {
         </div>
         <div className="door-number">
           <p className="sub">Door</p>
-          <p className="main">24</p>
+          <p className="main">{best + 1}</p>
         </div>
       </div>
       <div className={`main-info ${isLandscape ? 'landscape' : 'portrait'}`}>

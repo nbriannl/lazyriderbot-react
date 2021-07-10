@@ -61,7 +61,7 @@ const PickEndStation = ({ setStation }: PickEndStationProps) => {
 
 const App = (): ReactElement => {
   const [startStation, setStartStation] = useState('Station');
-  const [endStation, setEndStation] = useState('Station');
+  const [endStation, setEndStation] = useState('Khatib');
 
   return (
     <div className="App">

@@ -60,10 +60,21 @@
     width: 100%;
 
     svg {
-      color: #24F178;
       height: 3em;
-      transform: scaleY(-1);
       width: 3em;
+    }
+
+    &.same-side {
+      svg {
+        color: #24F178;
+        transform: scaleY(-1);
+      }
+    }
+
+    &.other-side {
+      svg {
+        color: #EF3829;
+      }
     }
   }
 

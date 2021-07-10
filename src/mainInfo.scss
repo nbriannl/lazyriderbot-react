@@ -1,0 +1,183 @@
+// Normal
+.main-info.landscape {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em 1em 0.5em 1em;
+  width: 100%;
+  flex-grow: 1;
+  justify-content: center;
+
+  .platform-info {
+    box-sizing: border-box;
+    background-color: #F2F2F2;
+    margin: 0.5em 3em;
+    border-bottom: 0.2em solid #E0E0E0;
+    height: 5em;
+    position: relative;
+    
+    svg {
+      position: absolute;
+      height: 2em;
+      width: 2em;
+      color: #004D55;
+    } 
+
+    path {
+      stroke: #004D55;
+    }
+  }
+
+  .other-train {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F2F2F2;
+    border-bottom: 0.2em solid #BDBDBD;
+    margin: 0 1.5em 0 1.5em;
+    height: 2em;
+    border-radius: 2em 2em 0 0;
+    color: #919191;
+  }
+
+  .train-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 1.5em 0 0em;
+
+    svg {
+      height: 1.5em;
+      width: 1.5em;
+      color: #EF3829;
+    }
+  }
+
+  .train {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 2.5em;
+  }
+
+  .carraige {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #BDBDBD;
+    padding: 0;
+    margin: 0.2em;
+    width: 100%;
+    border-bottom: 0.2em solid #4F4F4F;
+
+    &:first-child {
+      border-radius: 2em 0 0 0;
+      padding-left: 1.5em;
+    }
+
+    &:last-child {
+      border-radius: 0 2em 0 0;
+      padding-right: 1.5em;
+    }
+  }
+
+  .door {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #585858;
+    margin: 3px 2px 0 2px;
+    width: 100%;
+  }
+}
+
+  
+.main-info.portrait {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: stretch;
+  padding: 1em 1em 1em 1em;
+  flex-grow: 1;
+  justify-content: center;
+
+  .platform-info {
+    box-sizing: border-box;
+    background-color: #F2F2F2;
+    border-left: 0.2em solid #E0E0E0;
+    border-right: 0.2em solid #E0E0E0;
+    margin: 1.5em 1em 0 1em;
+    width: 10em;
+    position: relative;
+
+    svg {
+      position: absolute;
+      height: 2em;
+      width: 2em;
+      color: #004D55;
+    } 
+
+    path {
+      stroke: #004D55;
+    }
+  }
+
+  .other-train {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F2F2F2;
+    border-right: 0.2em solid #BDBDBD;
+    margin-top: 1.5em;
+    border-radius: 0 0 0 0;
+    color: #919191;
+    width: 3em;
+
+    p {
+      transform: rotate(90deg);
+      white-space: nowrap;
+    }
+  }
+
+  .train-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 0 0 0;
+
+    svg {
+      height: 1.5em;
+      width: 1.5em;
+      color: #EF3829;
+    }
+  }
+
+  .train {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .carraige {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #BDBDBD;
+    padding: 0;
+    margin: 0.2em;
+    border-right: 0.2em solid #4F4F4F;
+    width: 3em;
+    height: 100%
+  }
+
+  .door {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #585858;
+    margin: 2px 0px 2px 4px;
+    height: 100%;
+  }
+}

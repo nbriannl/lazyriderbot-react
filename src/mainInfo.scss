@@ -33,6 +33,69 @@
       height: 5em;
       margin: 0.5em 3em;
     }
+
+    .other-train {
+      align-items: center;
+      background-color: #F2F2F2;
+      border-bottom: 0.2em solid #BDBDBD;
+      border-radius: 2em 2em 0 0;
+      color: #919191;
+      display: flex;
+      height: 2em;
+      justify-content: center;
+      margin: 0 1.5em 0 1.5em;
+    }
+  
+    .train-info {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      margin: 0 1.5em 0 0em;
+  
+      svg {
+        color: #EF3829;
+        height: 1.5em;
+        width: 1.5em;
+      }
+    }
+  
+    .train {
+      display: flex;
+      flex-direction: row;
+      height: 2.5em;
+      justify-content: space-between;
+      width: 100%;
+    }
+  
+    .carraige {
+      background-color: #BDBDBD;
+      border-bottom: 0.2em solid #4F4F4F;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin: 0.2em;
+      padding: 0;
+      width: 100%;
+  
+      &:first-child {
+        border-radius: 2em 0 0 0;
+        padding-left: 1.5em;
+      }
+  
+      &:last-child {
+        border-radius: 0 2em 0 0;
+        padding-right: 1.5em;
+      }
+    }
+  
+    .door {
+      background-color: #585858;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin: 3px 2px 0 2px;
+      width: 100%;
+    }
   }
 
   &.portrait {
@@ -45,131 +108,63 @@
       margin: 1.5em 1em 0 1em;
       width: 10em;
     }
-  }
-}
 
-.main-info.landscape {
-  .other-train {
-    align-items: center;
-    background-color: #F2F2F2;
-    border-bottom: 0.2em solid #BDBDBD;
-    border-radius: 2em 2em 0 0;
-    color: #919191;
-    display: flex;
-    height: 2em;
-    justify-content: center;
-    margin: 0 1.5em 0 1.5em;
-  }
-
-  .train-info {
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    margin: 0 1.5em 0 0em;
-
-    svg {
-      color: #EF3829;
-      height: 1.5em;
-      width: 1.5em;
-    }
-  }
-
-  .train {
-    display: flex;
-    flex-direction: row;
-    height: 2.5em;
-    justify-content: space-between;
-    width: 100%;
-  }
-
-  .carraige {
-    background-color: #BDBDBD;
-    border-bottom: 0.2em solid #4F4F4F;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 0.2em;
-    padding: 0;
-    width: 100%;
-
-    &:first-child {
-      border-radius: 2em 0 0 0;
-      padding-left: 1.5em;
-    }
-
-    &:last-child {
-      border-radius: 0 2em 0 0;
-      padding-right: 1.5em;
-    }
-  }
-
-  .door {
-    background-color: #585858;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 3px 2px 0 2px;
-    width: 100%;
-  }
-}
-
+    .other-train {
+      align-items: center;
+      background-color: #F2F2F2;
+      border-radius: 0 0 0 0;
+      border-right: 0.2em solid #BDBDBD;
+      color: #919191;
+      display: flex;
+      justify-content: center;
+      margin-top: 1.5em;
+      width: 3em;
   
-.main-info.portrait {
-  .other-train {
-    align-items: center;
-    background-color: #F2F2F2;
-    border-radius: 0 0 0 0;
-    border-right: 0.2em solid #BDBDBD;
-    color: #919191;
-    display: flex;
-    justify-content: center;
-    margin-top: 1.5em;
-    width: 3em;
-
-    p {
-      transform: rotate(90deg);
-      white-space: nowrap;
+      p {
+        transform: rotate(90deg);
+        white-space: nowrap;
+      }
     }
-  }
-
-  .train-info {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    margin: 0 0 0 0;
-
-    svg {
-      color: #EF3829;
-      height: 1.5em;
-      width: 1.5em;
+  
+    .train-info {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      margin: 0 0 0 0;
+  
+      svg {
+        color: #EF3829;
+        height: 1.5em;
+        width: 1.5em;
+      }
     }
-  }
-
-  .train {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    justify-content: space-between;
-  }
-
-  .carraige {
-    background-color: #BDBDBD;
-    border-right: 0.2em solid #4F4F4F;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    justify-content: space-between;
-    margin: 0.2em;
-    padding: 0;
-    width: 3em
-  }
-
-  .door {
-    background-color: #585858;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    justify-content: space-between;
-    margin: 2px 0px 2px 4px;
+  
+    .train {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-between;
+    }
+  
+    .carraige {
+      background-color: #BDBDBD;
+      border-right: 0.2em solid #4F4F4F;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-between;
+      margin: 0.2em;
+      padding: 0;
+      width: 3em
+    }
+  
+    .door {
+      background-color: #585858;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-between;
+      margin: 2px 0px 2px 4px;
+    }
   }
 }

@@ -1,7 +1,9 @@
-import { BsTriangleFill, BsCaretLeftFill, BsFillCaretUpFill } from 'react-icons/bs';
+import { BsTriangleFill } from 'react-icons/bs';
 import { FcRotateToLandscape, FcRotateToPortrait } from 'react-icons/fc';
 import { useState, ReactElement } from 'react';
 import Platform from './Platform';
+import Train from './Train';
+import OtherTrain from './OtherTrain';
 
 interface Props {
   startStation: string;
@@ -13,7 +15,7 @@ const MainDisplay = ({ endStation }: Props): ReactElement => {
   const numDoors = 4;
   const isDoorOpeningSameSide = true;
   // 0-index
-  const best = 19;
+  const bestDoorIndex = 19;
 
   const [isLandscape, setIsLandscape] = useState(true);
 
@@ -36,37 +38,18 @@ const MainDisplay = ({ endStation }: Props): ReactElement => {
         </div>
         <div className="door-number">
           <p className="sub">Door</p>
-          <p className="main">{best + 1}</p>
+          <p className="main">{bestDoorIndex + 1}</p>
         </div>
       </div>
       <div className={`main-info ${isLandscape ? 'landscape' : 'portrait'}`}>
-        <div className="other-train">
-          <p>Train towards Marina Bay</p>
-        </div>
+        <OtherTrain terminus={'Marina Bay'} />
         <Platform isLandscape={isLandscape} />
-        <div className="train-info">
-          {
-            isLandscape ?
-              <BsCaretLeftFill className="direction-tri" /> :
-              <BsFillCaretUpFill className="direction-tri" />
-          }
-          <div className="train">
-            {
-              [...Array(numCarraiges)].map((carraige, i) => {
-                return (
-                  <div key={i} className="carraige">{
-                    [...Array(numDoors)].map((door, j) => {
-                      const isBestDoor = ((i) * numDoors + j) === best;
-                      // 0-index
-                      return <div key={`${(i) * numDoors + j}`} className={`door ${isBestDoor ? 'best' : ''}`} />;
-                    })
-                  }
-                  </div>
-                );
-              })
-            }
-          </div>
-        </div>
+        <Train
+          isLandscape={isLandscape}
+          numCarraiges={numCarraiges}
+          numDoors={numDoors}
+          bestDoorIndex={bestDoorIndex}
+        />
       </div>
     </div>
   );

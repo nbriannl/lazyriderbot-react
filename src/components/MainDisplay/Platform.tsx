@@ -71,8 +71,12 @@ const Platform = ({ isLandscape }: Props): ReactElement => {
     );
   };
 
+  const maxFeaturesForAnArea = Math.max(...platformInfo.map(info => info.features.length));
+  const value = maxFeaturesForAnArea * 2 + 1;
+  const platformStyleValue = `${value}em`;
+  const platformStyle = isLandscape ? { height: platformStyleValue } : { width: platformStyleValue };
   return (
-    <div className="platform-info">
+    <div className="platform-info" style={platformStyle}>
       {platformInfo.map((feature, i) => renderPlatformFeature(feature, i))}
     </div>
   );

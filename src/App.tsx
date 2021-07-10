@@ -3,6 +3,7 @@ import './App.scss';
 import { BsTriangleFill, BsCaretLeftFill } from 'react-icons/bs';
 import { GrEscalator, GrElevator, GrTrain } from 'react-icons/gr';
 import { GiStairs } from 'react-icons/gi';
+import { FcRotateToLandscape, FcRotateToPortrait } from 'react-icons/fc';
 
 interface PickStartStationProps {
   setStation: Dispatch<SetStateAction<string>>;
@@ -64,16 +65,26 @@ interface ResultProps {
   startStation: string;
   endStation: string;
 }
+
 const Result = ({ endStation }: ResultProps) => {
   const numCarraiges = 6;
   const numDoors = 4;
+
+  const [isLandscape, setIsLandscape] = useState(true);
 
   return (
     <div>
       <div className="display">
         <div className="content">
           <div className="top">
-            <p>This station:<span className="station-name"> {endStation}</span></p>
+            <p className="station-info">This station:<span className="station-name"> {endStation}</span></p>
+            <div className="rotate-btn" onClick={() => setIsLandscape(!isLandscape)}>
+              {
+                isLandscape ?
+                  <FcRotateToPortrait /> :
+                  <FcRotateToLandscape />
+              }
+            </div>
           </div>
           <div className="med">
             <div className="door-opening-info">
@@ -89,15 +100,15 @@ const Result = ({ endStation }: ResultProps) => {
               <p className="main">24</p>
             </div>
           </div>
-          <div className="bot">
+          <div className="main-info">
             <div className="other-train">
               <p>Train towards Jurong East</p>
             </div>
             <div className="platform-info">
-              <GrEscalator className="escalator" style={{ left: 'calc(0.75 * (100% - 2em))' }} />
-              <GrElevator className="elevator" style={{ left: 'calc(0.3 * (100% - 2em))' }} />
-              <GrTrain className="icon-train" style={{ left: 'calc(0.2 * (100% - 2em))' }} />
-              <GiStairs className="stairs" style={{ left: 'calc(0.1 * (100% - 2em))' }} />
+              <GrEscalator style={{ left: 'calc(0.75 * (100% - 2em))' }} />
+              <GrElevator style={{ left: 'calc(0.3 * (100% - 2em))' }} />
+              <GrTrain style={{ left: 'calc(0.2 * (100% - 2em))' }} />
+              <GiStairs style={{ left: 'calc(0.1 * (100% - 2em))' }} />
             </div>
             <div className="train-info">
               <BsCaretLeftFill className="direction-tri" />

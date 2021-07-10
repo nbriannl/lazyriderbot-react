@@ -18,7 +18,6 @@ enum PlatformFeature {
   StairInternalTansfer
 }
 
-
 const IconElevator = (): ReactElement => {
   return <GrElevator />;
 };
@@ -52,7 +51,8 @@ const MainDisplay = ({ endStation }: Props): ReactElement => {
   const numCarraiges = 6;
   const numDoors = 4;
   const isDoorOpeningSameSide = true;
-  const best = 0;
+  // 0-index
+  const best = 20;
 
   const [isLandscape, setIsLandscape] = useState(true);
 

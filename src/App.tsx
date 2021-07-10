@@ -1,9 +1,8 @@
 import { Dispatch, ReactElement, SetStateAction, useState } from 'react';
 import './App.scss';
 import { BsTriangleFill, BsCaretLeftFill } from 'react-icons/bs';
-import { GrEscalator, GrElevator, GrTrain } from "react-icons/gr";
-import { GiStairs } from "react-icons/gi";
-
+import { GrEscalator, GrElevator, GrTrain } from 'react-icons/gr';
+import { GiStairs } from 'react-icons/gi';
 
 interface PickStartStationProps {
   setStation: Dispatch<SetStateAction<string>>;
@@ -14,14 +13,15 @@ const PickStartStation = ({ setStation }: PickStartStationProps) => {
 
   const renderOption = (station: string) => {
     return <option key={station} value={station} />;
-  }
+  };
 
   return (
     <>
-      <input list="start-station" name="start-stations" id="start-stations"
+      <input
+        list="start-station" name="start-stations" id="start-stations"
         onChange={e => {
           if (stations.includes(e.target.value)) {
-            setStation(e.target.value)
+            setStation(e.target.value);
           }
         }}
       />
@@ -30,7 +30,7 @@ const PickStartStation = ({ setStation }: PickStartStationProps) => {
       </datalist>
     </>
   );
-}
+};
 
 interface PickEndStationProps {
   setStation: Dispatch<SetStateAction<string>>;
@@ -41,32 +41,34 @@ const PickEndStation = ({ setStation }: PickEndStationProps) => {
 
   const renderOption = (station: string) => {
     return <option key={station} value={station} />;
-  }
+  };
 
   return (
     <>
-      <input list="end-station" name="end-stations" id="end-stations"
+      <input
+        list="end-station" name="end-stations" id="end-stations"
         onChange={e => {
           if (stations.includes(e.target.value)) {
-            setStation(e.target.value)
+            setStation(e.target.value);
           }
-        }} />
+        }}
+      />
       <datalist id="end-station">
         {stations.map(renderOption)}
       </datalist>
     </>
   );
-}
+};
 
 interface ResultProps {
   startStation: string;
   endStation: string;
 }
-const Result = ({ startStation, endStation }: ResultProps) => {
+const Result = ({ endStation }: ResultProps) => {
   const numCarraiges = 6;
   const numDoors = 4;
 
-  return (<>
+  return (
     <div>
       <div className="display">
         <div className="content">
@@ -101,12 +103,15 @@ const Result = ({ startStation, endStation }: ResultProps) => {
               <BsCaretLeftFill className="direction-tri" />
               <div className="train">
                 {
-                  [...Array(numCarraiges)].map((item, i) => {
-                    return <div key={i} className="carraige">{
-                      [...Array(numDoors)].map((item, j) => {
-                        return <div key={j} className="door"></div>
-                      })
-                    }</div>
+                  [...Array(numCarraiges)].map((carraige, i) => {
+                    return (
+                      <div key={i} className="carraige">{
+                        [...Array(numDoors)].map((door, j) => {
+                          return <div key={j} className="door" />;
+                        })
+                      }
+                      </div>
+                    );
 
                   })
                 }
@@ -116,8 +121,8 @@ const Result = ({ startStation, endStation }: ResultProps) => {
         </div>
       </div>
     </div>
-  </>)
-}
+  );
+};
 
 const App = (): ReactElement => {
   const [startStation, setStartStation] = useState('Station');
@@ -126,14 +131,14 @@ const App = (): ReactElement => {
   return (
     <div className="App">
       <div>
-        <PickStartStation setStation={setStartStation}></PickStartStation>
-        <PickEndStation setStation={setEndStation}></PickEndStation>
+        <PickStartStation setStation={setStartStation} />
+        <PickEndStation setStation={setEndStation} />
       </div>
       <div>
-        {<Result startStation={startStation} endStation={endStation}></Result>}
+        {<Result startStation={startStation} endStation={endStation} />}
       </div>
     </div>
   );
-}
+};
 
 export default App;

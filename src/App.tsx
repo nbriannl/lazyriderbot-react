@@ -141,12 +141,14 @@ const App = (): ReactElement => {
 
   return (
     <div className="App">
-      <div>
-        <PickStartStation setStation={setStartStation} />
-        <PickEndStation setStation={setEndStation} />
-      </div>
-      <div>
-        {<Result startStation={startStation} endStation={endStation} />}
+      <div className="container">
+        <div className="station-selector">
+          <PickStartStation setStation={setStartStation} />
+          <PickEndStation setStation={setEndStation} />
+        </div>
+        <div className="result">
+          {<Result startStation={startStation} endStation={endStation} />}
+        </div>
       </div>
     </div>
   );

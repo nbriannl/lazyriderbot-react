@@ -34,7 +34,7 @@ p {
   height: 100vh;
 }
 
-.display {
+.display {  
   .content {
     display: flex;
     flex-direction: column;
@@ -52,10 +52,28 @@ p {
     width: 100%;
     text-align: center;
     border-bottom: 5px solid #EF3829;
-    padding: 0.2em 0;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+
+    .station-info {
+      width: 100%;
+    }
 
     span {
       font-size: 1.5em;
+    }
+
+    .rotate-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 0.5em;
+
+      svg {
+        width: 1.5em;
+        height: 1.5em;
+      }
     }
   }
 
@@ -85,14 +103,14 @@ p {
 
   .door-opening-info-text {
     text-align: center;
-    padding: 1em;
+    padding: 0 1em;
 
     .sub {
-      font-size: 1.4em;
+      font-size: 1em;
     }
 
     .main {
-      font-size: 2em;
+      font-size: 1.5em;
       font-weight: 700;
     }
   }
@@ -103,119 +121,217 @@ p {
     text-align: center;
     justify-content: center;
     background-color: #327177;
-    padding: 1em 1.5em;
+    padding: 0.5em 1em;
 
     .sub {
-      font-size: 1.2em;
+      font-size: 1em;
     }
 
     .main {
-      font-size: 2em;
+      font-size: 1.5em;
       font-weight: 700;
     }
   }
 
-  .bot {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    padding: 2em;
-    width: 100%;
-  }
+  // Normal
 
-  .platform-info {
-    box-sizing: border-box;
-    background-color: #F2F2F2;
-    margin: 0.5em 3em;
-    border-bottom: 0.2em solid #E0E0E0;
-    height: 5em;
-    position: relative;
-    
-
-    .elevator {
-      left: calc(0.1 * (100% - 2em));
+  @media screen and (min-width: 376px) {
+    .main-info {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      padding: 0.5em 1em 0 1em;
+      width: 100%;
     }
-
-    .icon-train {
-      left: calc(1 * (100% - 2em));
+  
+    .platform-info {
+      box-sizing: border-box;
+      background-color: #F2F2F2;
+      margin: 0.5em 3em;
+      border-bottom: 0.2em solid #E0E0E0;
+      height: 5em;
+      position: relative;
+      
+  
+      .elevator {
+        left: calc(0.1 * (100% - 2em));
+      }
+  
+      .icon-train {
+        left: calc(1 * (100% - 2em));
+      }
+  
+      .stairs {
+        left: calc(0.5 * (100% - 2em));
+      }
+  
+      svg {
+        position: absolute;
+        height: 2em;
+        width: 2em;
+        color: #004D55;
+      } 
+  
+      path {
+        stroke: #004D55;
+      }
     }
-
-    .stairs {
-      left: calc(0.5 * (100% - 2em));
-    }
-
-    svg {
-      position: absolute;
+  
+    .other-train {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #F2F2F2;
+      border-bottom: 0.2em solid #BDBDBD;
+      margin: 0 1.5em 0 1.5em;
       height: 2em;
-      width: 2em;
-      color: #004D55;
-    } 
-
-    path {
-      stroke: #004D55;
+      border-radius: 2em 2em 0 0;
+      color: #919191;
+    }
+  
+    .train-info {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      margin: 0 1.5em 0 0em;
+  
+      svg {
+        height: 1.5em;
+        width: 1.5em;
+        color: #EF3829;
+      }
+    }
+  
+    .train {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+      height: 2.5em;
+    }
+  
+    .carraige {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      background-color: #BDBDBD;
+      padding: 0;
+      margin: 0.2em;
+      width: 100%;
+      border-bottom: 0.2em solid #4F4F4F;
+  
+      &:first-child {
+        border-radius: 2em 0 0 0;
+        padding-left: 1.5em;
+      }
+  
+      &:last-child {
+        border-radius: 0 2em 0 0;
+        padding-right: 1.5em;
+      }
+    }
+  
+    .door {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      background-color: #585858;
+      margin: 3px 2px 0 2px;
+      width: 100%;
     }
   }
 
-  .other-train {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #F2F2F2;
-    border-bottom: 0.2em solid #BDBDBD;
-    margin: 0 1.5em 0 1.5em;
-    height: 2em;
-    border-radius: 2em 2em 0 0;
-    color: #919191;
-  }
-
-  .train-info {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    margin: 0 1.5em 0 0em;
-
-    svg {
-      height: 1.5em;
-      width: 1.5em;
-      color: #EF3829;
+  @media screen and (max-width: 375px) {
+    .main-info {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: stretch;
+      background: lightblue; 
+      // flex-grow: 1;
     }
-  }
-
-  .train {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    height: 2.5em;
-  }
-
-  .carraige {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: #BDBDBD;
-    padding: 0;
-    margin: 0.2em;
-    width: 100%;
-    border-bottom: 0.2em solid #4F4F4F;
-
-    &:first-child {
-      border-radius: 2em 0 0 0;
-      padding-left: 1.5em;
+  
+    .platform-info {
+      box-sizing: border-box;
+      background-color: #F2F2F2;
+      margin: 0.5em 3em;
+      border-bottom: 0.2em solid #E0E0E0;
+      width: 5em;
+      position: relative;
+      
+  
+      .elevator {
+        left: calc(0.1 * (100% - 2em));
+      }
+  
+      .icon-train {
+        left: calc(1 * (100% - 2em));
+      }
+  
+      .stairs {
+        left: calc(0.5 * (100% - 2em));
+      }
+  
+      svg {
+        position: absolute;
+        height: 2em;
+        width: 2em;
+        color: #004D55;
+      } 
+  
+      path {
+        stroke: #004D55;
+      }
     }
-
-    &:last-child {
-      border-radius: 0 2em 0 0;
-      padding-right: 1.5em;
+  
+    .other-train {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #F2F2F2;
+      border-right: 0.2em solid #BDBDBD;
+      margin: 0 1.5em 0 1.5em;
+      border-radius: 0 0 0 0;
+      color: #919191;
     }
-  }
-
-  .door {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: #585858;
-    margin: 3px 2px 0 2px;
-    width: 100%;
-  }
+  
+    .train-info {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      margin: 0 1.5em 0 0em;
+  
+      svg {
+        height: 1.5em;
+        width: 1.5em;
+        color: #EF3829;
+      }
+    }
+  
+    .train {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  
+    .carraige {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-color: #BDBDBD;
+      padding: 0;
+      margin: 0.2em;
+      border-bottom: 0.2em solid #4F4F4F;
+      width: 3em
+    }
+  
+    .door {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      background-color: #585858;
+      margin: 3px 2px 0 2px;
+    }
+  }  
 }
+

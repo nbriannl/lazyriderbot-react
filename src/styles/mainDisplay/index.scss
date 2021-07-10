@@ -1,45 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400;700&display=swap');
 @import 'mainInfo';
 
-body {
-  font-size: 15px;
-  font-weight: 400;
-}
-
-// Laptops - scale factor of 1.125
-@media screen and (min-width: 1366px) and (max-width: 1920px) {
-  body {
-    font-size: 1.125em;
-  }
-}
-
-// FHD - scale factor of 1.125
-@media screen and (min-width: 1920px) and (max-width: 2560px) {
-  body {
-    font-size: 1.125em;
-  }
-}
-
-// QHD - scale factor of 1.25
-@media screen and (min-width: 2560px) {
-  body {
-    font-size: 1.25em;
-  }
-}
-
-p {
-  font-family: 'Merriweather Sans', sans-serif;
-}
-
-#root {
-  height: 100vh;
-}
-
-.App {
-  height: 100%;
-}
-
-.result {
+.main-display {
   align-items: center;
 
   display: flex;
@@ -138,4 +99,3 @@ p {
     }
   }
 }
-

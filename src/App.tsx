@@ -6,12 +6,13 @@ import { HiOutlineSwitchVertical } from 'react-icons/hi';
 import MainDisplay from './components/MainDisplay/index';
 
 interface PickStartStationProps {
-  setStation: Dispatch<SetStateAction<string>>;
+  startStationInput: string;
+  setInputAndStation: (value: string) => void;
 }
 
-const PickStartStation = ({ setStation }: PickStartStationProps) => {
-  const stations = ['Yishun', 'Sembawang', 'Canberra', 'Bishan', 'Orchard', 'Somerset'];
+const stations = ['Yishun', 'Sembawang', 'Canberra', 'Bishan', 'Orchard', 'Somerset'];
 
+const PickStartStation = ({ startStationInput, setInputAndStation }: PickStartStationProps) => {
   const renderOption = (station: string) => {
     return <option key={station} value={station} />;
   };
@@ -21,10 +22,9 @@ const PickStartStation = ({ setStation }: PickStartStationProps) => {
       <input
         list="start-station" name="start-stations" id="start-stations"
         placeholder="From"
+        value={startStationInput}
         onChange={e => {
-          if (stations.includes(e.target.value)) {
-            setStation(e.target.value);
-          }
+          setInputAndStation(e.target.value);
         }}
       />
       <datalist id="start-station">
@@ -35,12 +35,11 @@ const PickStartStation = ({ setStation }: PickStartStationProps) => {
 };
 
 interface PickEndStationProps {
-  setStation: Dispatch<SetStateAction<string>>;
+  endStationInput: string;
+  setInputAndStation: (value: string) => void;
 }
 
-const PickEndStation = ({ setStation }: PickEndStationProps) => {
-  const stations = ['Yishun', 'Sembawang', 'Canberra', 'Bishan', 'Orchard', 'Somerset'];
-
+const PickEndStation = ({ endStationInput, setInputAndStation }: PickEndStationProps) => {
   const renderOption = (station: string) => {
     return <option key={station} value={station} />;
   };
@@ -50,10 +49,9 @@ const PickEndStation = ({ setStation }: PickEndStationProps) => {
       <input
         list="end-station" name="end-stations" id="end-stations"
         placeholder="To"
+        value={endStationInput}
         onChange={e => {
-          if (stations.includes(e.target.value)) {
-            setStation(e.target.value);
-          }
+          setInputAndStation(e.target.value);
         }}
       />
       <datalist id="end-station">
@@ -65,26 +63,50 @@ const PickEndStation = ({ setStation }: PickEndStationProps) => {
 
 
 const App = (): ReactElement => {
-  const [startStation, setStartStation] = useState('Station');
-  const [endStation, setEndStation] = useState('Khatib');
+  const [startStationInput, setStartStationInput] = useState('');
+  const [startStation, setStartStation] = useState('');
+  const [endStationInput, setEndStationInput] = useState('');
+  const [endStation, setEndStation] = useState('');
   const [isLandscape, setIsLandscape] = useState(true);
+
+  const setInputAndStation = (
+    value: string,
+    setStation: Dispatch<SetStateAction<string>>,
+    setInputValue: Dispatch<SetStateAction<string>>
+  ) => {
+    setInputValue(value);
+    stations.includes(value) ? setStation(value) : setStation('');
+  };
+
+  const setStartInputAndStation = (value: string) => {
+    setInputAndStation(value, setStartStation, setStartStationInput);
+  };
+
+  const setEndInputAndStation = (value: string) => {
+    setInputAndStation(value, setEndStation, setEndStationInput);
+  };
 
   return (
     <div className="App">
       <div className="station-selector">
         <div className="station-input">
           <div className="options">
-            <PickStartStation setStation={setStartStation} />
+            <PickStartStation
+              startStationInput={startStationInput}
+              setInputAndStation={setStartInputAndStation}
+            />
             <BsArrowDownShort className="down-arrow" />
-            <PickEndStation setStation={setEndStation} />
+            <PickEndStation
+              endStationInput={endStationInput}
+              setInputAndStation={setEndInputAndStation}
+            />
           </div>
           <div
             className="btn" onClick={() => {
-              const prevEnd = endStation;
-              const prevStart = startStation;
-              setStartStation(prevEnd);
-              setEndStation(prevStart);
-              console.log('swapped');
+              const prevEndInput = endStationInput;
+              const prevStartInput = startStationInput;
+              setStartInputAndStation(prevEndInput);
+              setEndInputAndStation(prevStartInput);
             }}
           >
             <HiOutlineSwitchVertical />

@@ -6,6 +6,10 @@ body {
   font-weight: 400;
 }
 
+p {
+  margin: 0;
+}
+
 // Laptops - scale factor of 1.125
 @media screen and (min-width: 1366px) and (max-width: 1920px) {
   body {
@@ -36,5 +40,52 @@ p {
 }
 
 .App {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
   height: 100%;
+}
+
+.station-selector {
+  align-items: stretch;
+  background-color: #004D55;
+  border-bottom: 5px solid #EF3829;
+  color: #fff;
+  display: flex;
+  flex-direction: row;
+  font-size: 1.4em;
+  text-align: center;
+  width: 100%;
+
+  .options {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+
+  input {
+    background-color: #004D55;
+    border: none;
+    color: #fff;
+    font-family: 'Merriweather Sans', sans-serif;
+    width: 15ch;
+  }
+
+  span {
+    font-size: 1.5em;
+  }
+
+  .rotate-btn {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 0 0.5em;
+
+    svg {
+      height: 1.5em;
+      width: 1.5em;
+    }
+  }
 }

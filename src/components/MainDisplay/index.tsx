@@ -1,32 +1,26 @@
 import { BsTriangleFill } from 'react-icons/bs';
-import { FcRotateToLandscape, FcRotateToPortrait } from 'react-icons/fc';
-import { useState, ReactElement } from 'react';
+import { ReactElement } from 'react';
 import Platform from './Platform';
 import Train from './Train';
 import OtherTrain from './OtherTrain';
 
 interface Props {
+  isLandscape: boolean;
   startStation: string;
   endStation: string;
 }
 
-const MainDisplay = ({ endStation }: Props): ReactElement => {
+const MainDisplay = ({ isLandscape, startStation, endStation }: Props): ReactElement => {
+  console.log(startStation, endStation);
   const numCarraiges = 6;
   const numDoors = 4;
   const isDoorOpeningSameSide = true;
   // 0-index
   const bestDoorIndex = 19;
 
-  const [isLandscape, setIsLandscape] = useState(true);
-
   return (
     <div className="main-display">
-      <div className="top">
-        <p className="station-info">This station:<span className="station-name"> {endStation}</span></p>
-        <div className="rotate-btn" onClick={() => setIsLandscape(!isLandscape)}>
-          {isLandscape ? <FcRotateToPortrait /> : <FcRotateToLandscape />}
-        </div>
-      </div>
+
       <div className="med">
         <div className={`door-opening-info ${isDoorOpeningSameSide ? 'same-side' : 'other-side'}`}>
           <BsTriangleFill />

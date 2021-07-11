@@ -1,5 +1,7 @@
 import { Dispatch, ReactElement, SetStateAction, useState } from 'react';
 import './styles/App.scss';
+import { BsArrowRightShort } from 'react-icons/bs';
+import { FcRotateToLandscape, FcRotateToPortrait } from 'react-icons/fc';
 import MainDisplay from './components/MainDisplay/index';
 
 interface PickStartStationProps {
@@ -62,14 +64,21 @@ const PickEndStation = ({ setStation }: PickEndStationProps) => {
 const App = (): ReactElement => {
   const [startStation, setStartStation] = useState('Station');
   const [endStation, setEndStation] = useState('Khatib');
+  const [isLandscape, setIsLandscape] = useState(true);
 
   return (
     <div className="App">
       <div className="station-selector">
-        <PickStartStation setStation={setStartStation} />
-        <PickEndStation setStation={setEndStation} />
+        <div className="options">
+          <PickStartStation setStation={setStartStation} />
+          <BsArrowRightShort />
+          <PickEndStation setStation={setEndStation} />
+        </div>
+        <div className="rotate-btn" onClick={() => setIsLandscape(!isLandscape)}>
+          {isLandscape ? <FcRotateToPortrait /> : <FcRotateToLandscape />}
+        </div>
       </div>
-      <MainDisplay startStation={startStation} endStation={endStation} />
+      <MainDisplay isLandscape={isLandscape} startStation={startStation} endStation={endStation} />
     </div>
   );
 };

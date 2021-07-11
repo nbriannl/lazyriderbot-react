@@ -7,42 +7,6 @@
   flex-direction: column; 
   height: 100%;
 
-  p {
-     margin: 0;
-  }
-
-  .top {
-    align-items: stretch;
-    background-color: #004D55;
-    border-bottom: 5px solid #EF3829;
-    color: #fff;
-    display: flex;
-    flex-direction: row;
-    font-size: 1.4em;
-    text-align: center;
-    width: 100%;
-
-    .station-info {
-      width: 100%;
-    }
-
-    span {
-      font-size: 1.5em;
-    }
-
-    .rotate-btn {
-      align-items: center;
-      display: flex;
-      justify-content: center;
-      padding: 0 0.5em;
-
-      svg {
-        height: 1.5em;
-        width: 1.5em;
-      }
-    }
-  }
-
   .med {
     align-items: stretch;
     background-color: #004D55;

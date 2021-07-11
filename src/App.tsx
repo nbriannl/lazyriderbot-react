@@ -1,7 +1,8 @@
 import { Dispatch, ReactElement, SetStateAction, useState } from 'react';
 import './styles/App.scss';
-import { BsArrowRightShort } from 'react-icons/bs';
+import { BsArrowDownShort } from 'react-icons/bs';
 import { FcRotateToLandscape, FcRotateToPortrait } from 'react-icons/fc';
+import { HiOutlineSwitchVertical } from 'react-icons/hi';
 import MainDisplay from './components/MainDisplay/index';
 
 interface PickStartStationProps {
@@ -9,7 +10,7 @@ interface PickStartStationProps {
 }
 
 const PickStartStation = ({ setStation }: PickStartStationProps) => {
-  const stations = ['Bishan', 'Orchard', 'Somerset'];
+  const stations = ['Yishun', 'Sembawang', 'Canberra', 'Bishan', 'Orchard', 'Somerset'];
 
   const renderOption = (station: string) => {
     return <option key={station} value={station} />;
@@ -19,6 +20,7 @@ const PickStartStation = ({ setStation }: PickStartStationProps) => {
     <>
       <input
         list="start-station" name="start-stations" id="start-stations"
+        placeholder="From"
         onChange={e => {
           if (stations.includes(e.target.value)) {
             setStation(e.target.value);
@@ -37,7 +39,7 @@ interface PickEndStationProps {
 }
 
 const PickEndStation = ({ setStation }: PickEndStationProps) => {
-  const stations = ['Yishun', 'Sembawang', 'Canberra'];
+  const stations = ['Yishun', 'Sembawang', 'Canberra', 'Bishan', 'Orchard', 'Somerset'];
 
   const renderOption = (station: string) => {
     return <option key={station} value={station} />;
@@ -47,6 +49,7 @@ const PickEndStation = ({ setStation }: PickEndStationProps) => {
     <>
       <input
         list="end-station" name="end-stations" id="end-stations"
+        placeholder="To"
         onChange={e => {
           if (stations.includes(e.target.value)) {
             setStation(e.target.value);
@@ -69,12 +72,25 @@ const App = (): ReactElement => {
   return (
     <div className="App">
       <div className="station-selector">
-        <div className="options">
-          <PickStartStation setStation={setStartStation} />
-          <BsArrowRightShort />
-          <PickEndStation setStation={setEndStation} />
+        <div className="station-input">
+          <div className="options">
+            <PickStartStation setStation={setStartStation} />
+            <BsArrowDownShort className="down-arrow" />
+            <PickEndStation setStation={setEndStation} />
+          </div>
+          <div
+            className="btn" onClick={() => {
+              const prevEnd = endStation;
+              const prevStart = startStation;
+              setStartStation(prevEnd);
+              setEndStation(prevStart);
+              console.log('swapped');
+            }}
+          >
+            <HiOutlineSwitchVertical />
+          </div>
         </div>
-        <div className="rotate-btn" onClick={() => setIsLandscape(!isLandscape)}>
+        <div className="btn" onClick={() => setIsLandscape(!isLandscape)}>
           {isLandscape ? <FcRotateToPortrait /> : <FcRotateToLandscape />}
         </div>
       </div>

@@ -101,12 +101,12 @@ const App = (): ReactElement => {
         <div
           className="btn" onClick={() => setMultiLocation(!multiLocation)}
         >
-          {!multiLocation ?
-            <MdLocationOn /> :
+          {multiLocation ?
             <div className="combined-icon">
               <MdLocationOn className="overlap-icon" />
               <MdLocationOn className="behind-icon" />
-            </div>}
+            </div> :
+            <MdLocationOn />}
         </div>
         <div className="station-input">
           <div className="options">

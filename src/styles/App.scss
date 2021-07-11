@@ -106,4 +106,22 @@ p {
     height: 1.5em;
     width: 1.5em;
   }
+
+  .combined-icon {
+    height: 1.5em;
+    position: relative;
+    width: 1.5em;
+
+    .overlap-icon {
+      color:#fff;
+      left: 9px;
+      position: absolute;
+      top: 0;
+    }
+
+    .behind-icon {
+      color:#76a0a4;
+    }
+  }
+
 }

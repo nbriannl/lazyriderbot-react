@@ -3,6 +3,7 @@ import './styles/App.scss';
 import { BsArrowDownShort } from 'react-icons/bs';
 import { FcRotateToLandscape, FcRotateToPortrait } from 'react-icons/fc';
 import { HiOutlineSwitchVertical } from 'react-icons/hi';
+import { MdLocationOn } from 'react-icons/md';
 import MainDisplay from './components/MainDisplay/index';
 
 interface PickStartStationProps {
@@ -67,6 +68,7 @@ const App = (): ReactElement => {
   const [startStation, setStartStation] = useState('');
   const [endStationInput, setEndStationInput] = useState('');
   const [endStation, setEndStation] = useState('');
+  const [multiLocation, setMultiLocation] = useState(true);
   const [isLandscape, setIsLandscape] = useState(false);
 
   const setInputAndStation = (
@@ -86,9 +88,26 @@ const App = (): ReactElement => {
     setInputAndStation(value, setEndStation, setEndStationInput);
   };
 
+  const swapStations = () => {
+    const prevEndInput = endStationInput;
+    const prevStartInput = startStationInput;
+    setStartInputAndStation(prevEndInput);
+    setEndInputAndStation(prevStartInput);
+  };
+
   return (
     <div className="App">
       <div className="station-selector">
+        <div
+          className="btn" onClick={() => setMultiLocation(!multiLocation)}
+        >
+          {!multiLocation ?
+            <MdLocationOn /> :
+            <div className="combined-icon">
+              <MdLocationOn className="overlap-icon" />
+              <MdLocationOn className="behind-icon" />
+            </div>}
+        </div>
         <div className="station-input">
           <div className="options">
             <PickStartStation
@@ -102,12 +121,7 @@ const App = (): ReactElement => {
             />
           </div>
           <div
-            className="btn" onClick={() => {
-              const prevEndInput = endStationInput;
-              const prevStartInput = startStationInput;
-              setStartInputAndStation(prevEndInput);
-              setEndInputAndStation(prevStartInput);
-            }}
+            className="btn" onClick={swapStations}
           >
             <HiOutlineSwitchVertical />
           </div>

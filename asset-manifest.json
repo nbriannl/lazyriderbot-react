@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/lazyriderbot-react/static/css/main.535e7507.chunk.css",
-    "main.js": "/lazyriderbot-react/static/js/main.5a6a5dca.chunk.js",
-    "main.js.map": "/lazyriderbot-react/static/js/main.5a6a5dca.chunk.js.map",
-    "runtime-main.js": "/lazyriderbot-react/static/js/runtime-main.580ad020.js",
-    "runtime-main.js.map": "/lazyriderbot-react/static/js/runtime-main.580ad020.js.map",
-    "static/js/2.3670ff1d.chunk.js": "/lazyriderbot-react/static/js/2.3670ff1d.chunk.js",
-    "static/js/2.3670ff1d.chunk.js.map": "/lazyriderbot-react/static/js/2.3670ff1d.chunk.js.map",
-    "static/js/3.93bdbb29.chunk.js": "/lazyriderbot-react/static/js/3.93bdbb29.chunk.js",
-    "static/js/3.93bdbb29.chunk.js.map": "/lazyriderbot-react/static/js/3.93bdbb29.chunk.js.map",
+    "main.css": "/lazyriderbot-react/static/css/main.20d791f0.chunk.css",
+    "main.js": "/lazyriderbot-react/static/js/main.ac960fc9.chunk.js",
+    "main.js.map": "/lazyriderbot-react/static/js/main.ac960fc9.chunk.js.map",
+    "runtime-main.js": "/lazyriderbot-react/static/js/runtime-main.a417f45d.js",
+    "runtime-main.js.map": "/lazyriderbot-react/static/js/runtime-main.a417f45d.js.map",
+    "static/js/2.772bea2d.chunk.js": "/lazyriderbot-react/static/js/2.772bea2d.chunk.js",
+    "static/js/2.772bea2d.chunk.js.map": "/lazyriderbot-react/static/js/2.772bea2d.chunk.js.map",
+    "static/js/3.8696a720.chunk.js": "/lazyriderbot-react/static/js/3.8696a720.chunk.js",
+    "static/js/3.8696a720.chunk.js.map": "/lazyriderbot-react/static/js/3.8696a720.chunk.js.map",
     "index.html": "/lazyriderbot-react/index.html",
-    "static/css/main.535e7507.chunk.css.map": "/lazyriderbot-react/static/css/main.535e7507.chunk.css.map",
-    "static/js/2.3670ff1d.chunk.js.LICENSE.txt": "/lazyriderbot-react/static/js/2.3670ff1d.chunk.js.LICENSE.txt"
+    "static/css/main.20d791f0.chunk.css.map": "/lazyriderbot-react/static/css/main.20d791f0.chunk.css.map",
+    "static/js/2.772bea2d.chunk.js.LICENSE.txt": "/lazyriderbot-react/static/js/2.772bea2d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.580ad020.js",
-    "static/js/2.3670ff1d.chunk.js",
-    "static/css/main.535e7507.chunk.css",
-    "static/js/main.5a6a5dca.chunk.js"
+    "static/js/runtime-main.a417f45d.js",
+    "static/js/2.772bea2d.chunk.js",
+    "static/css/main.20d791f0.chunk.css",
+    "static/js/main.ac960fc9.chunk.js"
   ]
 }

@@ -1,0 +1,104 @@
+
+.train-info {
+  align-items: center;
+  display: flex;
+
+  svg {
+    color: #EF3829;
+    height: 1.5em;
+    width: 1.5em;
+  }
+}
+
+.train {
+  display: flex;
+  justify-content: space-between;
+}
+
+.carraige {
+  background-color: #BDBDBD;
+  display: flex;
+  justify-content: space-between;
+}
+
+.door {
+  background-color: #585858;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+
+  &.best {
+    background-color: #24F178;
+  }
+}
+
+.landscape {
+  .train-info {
+    flex-direction: row;
+    margin: 0.25em 1.5em 0.25em 0em;
+  }
+
+  .train {
+    flex-direction: row;
+    height: 2.5em;
+    width: 100%;
+  }
+
+  .carraige {
+    border-bottom: 0.2em solid #4F4F4F;
+    flex-direction: row;
+    margin: 0 0.2em 0 0.2em;
+    width: 100%;
+
+    &:first-child {
+      border-radius: 2em 0 0 0;
+      padding-left: 1.5em;
+    }
+
+    &:last-child {
+      border-radius: 0 2em 0 0;
+      padding-right: 1.5em;
+    }
+  }
+
+  .door {
+    flex-direction: row;
+    margin: 0px 2px 0 2px;
+    width: 100%;
+  }
+}
+
+.portrait {
+  .train-info {
+    flex-direction: column;
+    margin: 0 0.25em 0 0.25em;
+  }
+
+  .train {
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .carraige {
+    border-right: 0.2em solid #4F4F4F;
+    flex-direction: column;
+    height: 100%;
+    margin: 0.2em 0;
+    width: 3em;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .door {
+    flex-direction: column;
+    height: 100%;
+    margin: 2px 0px 2px 4px;
+  }
+}

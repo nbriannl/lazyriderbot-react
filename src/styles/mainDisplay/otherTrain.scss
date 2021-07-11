@@ -1,0 +1,30 @@
+.other-train {
+  align-items: center;
+  background-color: #F2F2F2;
+  color: #919191;
+  display: flex;
+  justify-content: center;
+}
+
+.landscape {
+  .other-train {
+    border-bottom: 0.2em solid #BDBDBD;
+    border-radius: 2em 2em 0 0;
+    height: 2em;
+    margin: 0.25em 1.5em 0.25em 1.5em;
+  }
+}
+
+.portrait {
+  .other-train {
+    border-radius: 0 0 0 0;
+    border-right: 0.2em solid #BDBDBD;
+    margin: 1.5em 0.25em 0 0.25em;
+    width: 3em;
+
+    p {
+      transform: rotate(90deg);
+      white-space: nowrap;
+    }
+  }
+}

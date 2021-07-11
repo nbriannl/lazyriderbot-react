@@ -62,10 +62,8 @@ const Platform = ({ isLandscape }: Props): ReactElement => {
 
   const renderPlatformFeature = (feature: PlatformFeatureInfo, index: number): ReactElement => {
     const { distFromHead, features } = feature;
-    const styleValue = `calc(${distFromHead} * (100% - 2em))`;
-    const style = isLandscape ? { left: styleValue } : { top: styleValue };
     return (
-      <div key={index} style={style}>
+      <div key={index} className={`platform-feature-${distFromHead * 100}`}>
         {features.map(renderFeature)}
       </div>
     );

@@ -69,6 +69,26 @@
     }
   }
 
+  &.landscape {
+    /* warning: this is generally a bad idea */
+    @for $i from 1 through 100 {
+      .platform-feature-#{$i} {
+        // to-do: replace 2em with variable
+        left: calc((#{$i} / 100) * (100% - 2em));
+      }
+    }
+  }
+
+  &.portrait {
+    /* warning: this is generally a bad idea */
+    @for $i from 1 through 100 {
+      .platform-feature-#{$i} {
+        // to-do: replace 2em with variable
+        top: calc((#{$i} / 100) * (100% - 2em));
+      }
+    }
+  }
+
   // orientation specific styls
   &.landscape {
     flex-direction: column;

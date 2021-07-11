@@ -69,31 +69,19 @@
     }
   }
 
-  &.landscape {
-    /* warning: this is generally a bad idea */
-    @for $i from 1 through 100 {
-      .platform-feature-#{$i} {
-        // to-do: replace 2em with variable
-        left: calc((#{$i} / 100) * (100% - 2em));
-      }
-    }
-  }
 
-  &.portrait {
-    /* warning: this is generally a bad idea */
-    @for $i from 1 through 100 {
-      .platform-feature-#{$i} {
-        // to-do: replace 2em with variable
-        top: calc((#{$i} / 100) * (100% - 2em));
-      }
-    }
-  }
 
-  // orientation specific styls
   &.landscape {
     flex-direction: column;
     width: 100%;
+  }
 
+  &.portrait {
+    align-items: stretch;
+    flex-direction: row-reverse;
+  }
+
+  &.landscape {
     .platform-info {
       border-bottom: 0.2em solid #E0E0E0;
       margin: 0.25em 3em;
@@ -111,13 +99,70 @@
       }
     }
 
+    /* warning: this is generally a bad idea */
+    // https://stackoverflow.com/questions/39518374/scss-variable-class-name/39518851
+    @for $i from 1 through 100 {
+      .platform-feature-#{$i} {
+        // to-do: replace 2em with variable
+        left: calc((#{$i} / 100) * (100% - 2em));
+      }
+    }
+  }
+
+  &.portrait {
+    .platform-info {
+      border-left: 0.2em solid #E0E0E0;
+      border-right: 0.2em solid #E0E0E0;
+      margin: 1.5em 0.25em 0 0.25em;
+
+      div {
+        display: flex;
+        flex-direction: row;
+        left: 50%;
+  
+        position: absolute;
+        transform: translateX(-50%);    
+      }
+
+      svg {
+        padding: 0 0.1em;
+      }
+    }
+
+    /* warning: this is generally a bad idea */
+    // https://stackoverflow.com/questions/39518374/scss-variable-class-name/39518851
+    @for $i from 1 through 100 {
+      .platform-feature-#{$i} {
+        // to-do: replace 2em with variable
+        top: calc((#{$i} / 100) * (100% - 2em));
+      }
+    }
+  }
+
+  &.landscape {
     .other-train {
       border-bottom: 0.2em solid #BDBDBD;
       border-radius: 2em 2em 0 0;
       height: 2em;
       margin: 0.25em 1.5em 0.25em 1.5em;
     }
+  }
+
+  &.portrait {
+    .other-train {
+      border-radius: 0 0 0 0;
+      border-right: 0.2em solid #BDBDBD;
+      margin: 1.5em 0.25em 0 0.25em;
+      width: 3em;
   
+      p {
+        transform: rotate(90deg);
+        white-space: nowrap;
+      }
+    }
+  }
+
+  &.landscape {
     .train-info {
       flex-direction: row;
       margin: 0.25em 1.5em 0.25em 0em;
@@ -154,40 +199,6 @@
   }
 
   &.portrait {
-    align-items: stretch;
-    flex-direction: row-reverse;
-
-    .platform-info {
-      border-left: 0.2em solid #E0E0E0;
-      border-right: 0.2em solid #E0E0E0;
-      margin: 1.5em 0.25em 0 0.25em;
-
-      div {
-        display: flex;
-        flex-direction: row;
-        left: 50%;
-  
-        position: absolute;
-        transform: translateX(-50%);    
-      }
-
-      svg {
-        padding: 0 0.1em;
-      }
-    }
-
-    .other-train {
-      border-radius: 0 0 0 0;
-      border-right: 0.2em solid #BDBDBD;
-      margin: 1.5em 0.25em 0 0.25em;
-      width: 3em;
-  
-      p {
-        transform: rotate(90deg);
-        white-space: nowrap;
-      }
-    }
-  
     .train-info {
       flex-direction: column;
       margin: 0 0.25em 0 0.25em;

@@ -42,7 +42,11 @@ const MainDisplay = ({ endStation }: Props): ReactElement => {
         </div>
       </div>
       <div className={`main-info ${isLandscape ? 'landscape' : 'portrait'}`}>
-        <OtherTrain terminus={'Marina Bay'} />
+        <OtherTrain
+          text={'Train towards Marina Bay'}
+          isLandscape={isLandscape}
+          sameDirection={false}
+        />
         <Platform isLandscape={isLandscape} />
         <Train
           isLandscape={isLandscape}

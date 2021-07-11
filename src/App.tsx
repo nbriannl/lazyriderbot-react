@@ -95,18 +95,21 @@ const App = (): ReactElement => {
     setEndInputAndStation(prevStartInput);
   };
 
+  const multiLocationIcon = (
+    <div className="multi-loc-icon">
+      <MdLocationOn className="behind-icon" />
+      <MdLocationOn className="overlap-icon" />
+    </div>
+  );
+
   return (
     <div className="App">
       <div className="station-selector">
         <div
-          className="btn" onClick={() => setMultiLocation(!multiLocation)}
+          className={`btn column ${multiLocation ? 'multiloc' : 'singleloc'} `} onClick={() => setMultiLocation(!multiLocation)}
         >
-          {multiLocation ?
-            <div className="combined-icon">
-              <MdLocationOn className="overlap-icon" />
-              <MdLocationOn className="behind-icon" />
-            </div> :
-            <MdLocationOn />}
+          {multiLocationIcon}
+          <MdLocationOn className="single-loc-icon" />
         </div>
         <div className="station-input">
           <div className="options">

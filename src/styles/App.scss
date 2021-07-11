@@ -100,6 +100,11 @@ p {
     height: 100%;
     justify-content: center;
     padding: 0 0.5em;
+
+    &.column {
+      align-items: center;
+      flex-direction: column;
+    }
   }
 
   svg {
@@ -107,21 +112,42 @@ p {
     width: 1.5em;
   }
 
-  .combined-icon {
+  .singleloc {
+   .multi-loc-icon {
+     .behind-icon, 
+     .overlap-icon{
+      color: #285b60;
+     }
+   }   
+  }
+
+  .multiloc {
+    .single-loc-icon {
+      color: #285b60;
+    }
+  }
+
+  .multi-loc-icon {
     height: 1.5em;
+    margin-bottom: 0.2em;
     position: relative;
     width: 1.5em;
 
     .overlap-icon {
       color:#fff;
-      left: 9px;
+      left: 4px;
       position: absolute;
       top: 0;
     }
 
     .behind-icon {
       color:#76a0a4;
+      left: -4px;
+      position: absolute;
+      top: 0;
     }
+
+
   }
 
 }

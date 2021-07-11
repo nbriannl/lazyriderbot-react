@@ -25,7 +25,7 @@
     border-bottom: 0.2em solid #E0E0E0;
     margin: 0.25em 3em;
 
-    div {
+    .platform-feature {
       display: flex;
       flex-direction: column-reverse;
       position: absolute;
@@ -35,6 +35,12 @@
 
     svg {
       padding: 0.1em 0;
+    }
+
+    &.flip {
+      .platform-feature {
+        flex-direction: column;
+      }
     }
   }
 
@@ -54,7 +60,7 @@
     border-right: 0.2em solid #E0E0E0;
     margin: 1.5em 0.25em 1.5em 0.25em;
 
-    div {
+    .platform-feature {
       display: flex;
       flex-direction: row;
       left: 50%;
@@ -65,6 +71,12 @@
 
     svg {
       padding: 0 0.1em;
+    }
+
+    &.flip {
+      .platform-feature {
+        flex-direction: row-reverse;
+      }
     }
   }
 

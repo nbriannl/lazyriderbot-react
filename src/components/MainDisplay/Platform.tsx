@@ -3,7 +3,9 @@ import { IconElevator, IconEscalatorEntry, IconEscalatorExit, IconEscalatorInter
 
 interface Props {
   isLandscape: boolean;
+  direction: boolean;
 }
+
 
 enum PlatformFeature {
   Elevator,
@@ -19,30 +21,31 @@ interface PlatformFeatureInfo {
   features: Array<PlatformFeature>;
 }
 
-const Platform = ({ isLandscape }: Props): ReactElement => {
-  const platformInfo: Array<PlatformFeatureInfo> = [
-    {
-      distFromHead: 20,
-      features: [
-        PlatformFeature.Stairs,
-        PlatformFeature.EscalatorEntry
-      ]
-    },
-    {
-      distFromHead: 50,
-      features: [
-        PlatformFeature.Elevator
-      ]
-    },
-    {
-      distFromHead: 80,
-      features: [
-        PlatformFeature.Stairs,
-        PlatformFeature.EscalatorExit
-      ]
-    }
-  ];
+const khatib: Array<PlatformFeatureInfo> = [
+  {
+    distFromHead: 20,
+    features: [
+      PlatformFeature.Stairs,
+      PlatformFeature.EscalatorEntry
+    ]
+  },
+  {
+    distFromHead: 50,
+    features: [
+      PlatformFeature.Elevator
+    ]
+  },
+  {
+    distFromHead: 80,
+    features: [
+      PlatformFeature.Stairs,
+      PlatformFeature.EscalatorExit
+    ]
+  }
+];
 
+const Platform = ({ isLandscape, direction }: Props): ReactElement => {
+  const platformInfo = khatib;
   const renderFeature = (feature: PlatformFeature, index: number): ReactElement => {
     switch (feature) {
       case PlatformFeature.Elevator:
@@ -62,8 +65,9 @@ const Platform = ({ isLandscape }: Props): ReactElement => {
 
   const renderPlatformFeature = (feature: PlatformFeatureInfo, index: number): ReactElement => {
     const { distFromHead, features } = feature;
+    const distFromHeadOriented = direction ? distFromHead : (100 - distFromHead);
     return (
-      <div key={index} className={`platform-feature-${distFromHead}`}>
+      <div key={index} className={`platform-feature platform-feature-${distFromHeadOriented}`}>
         {features.map(renderFeature)}
       </div>
     );
@@ -74,7 +78,7 @@ const Platform = ({ isLandscape }: Props): ReactElement => {
   const platformStyleValue = `${value}em`;
   const platformStyle = isLandscape ? { height: platformStyleValue } : { width: platformStyleValue };
   return (
-    <div className="platform-info" style={platformStyle}>
+    <div className={`platform-info ${direction ? '' : 'flip'}`} style={platformStyle}>
       {platformInfo.map((feature, i) => renderPlatformFeature(feature, i))}
     </div>
   );

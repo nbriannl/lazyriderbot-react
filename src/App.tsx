@@ -2,7 +2,7 @@ import { Dispatch, ReactElement, SetStateAction, useState } from 'react';
 import './styles/App.scss';
 import { BsArrowDownShort } from 'react-icons/bs';
 import { FcRotateToLandscape, FcRotateToPortrait } from 'react-icons/fc';
-import { HiOutlineSwitchVertical } from 'react-icons/hi';
+import { HiOutlineSwitchVertical, HiOutlineSwitchHorizontal } from 'react-icons/hi';
 import { MdLocationOn } from 'react-icons/md';
 import MainDisplay from './components/MainDisplay/index';
 
@@ -38,9 +38,10 @@ const PickStartStation = ({ startStationInput, setInputAndStation }: PickStartSt
 interface PickEndStationProps {
   endStationInput: string;
   setInputAndStation: (value: string) => void;
+  placeholder: string;
 }
 
-const PickEndStation = ({ endStationInput, setInputAndStation }: PickEndStationProps) => {
+const PickEndStation = ({ endStationInput, setInputAndStation, placeholder }: PickEndStationProps) => {
   const renderOption = (station: string) => {
     return <option key={station} value={station} />;
   };
@@ -49,7 +50,7 @@ const PickEndStation = ({ endStationInput, setInputAndStation }: PickEndStationP
     <>
       <input
         list="end-station" name="end-stations" id="end-stations"
-        placeholder="To"
+        placeholder={placeholder}
         value={endStationInput}
         onChange={e => {
           setInputAndStation(e.target.value);
@@ -68,7 +69,9 @@ const App = (): ReactElement => {
   const [startStation, setStartStation] = useState('');
   const [endStationInput, setEndStationInput] = useState('');
   const [endStation, setEndStation] = useState('');
-  const [multiLocation, setMultiLocation] = useState(true);
+  const [isMultiLocationMode, setIsMultiLocationMode] = useState(true);
+  // true is heading to JE
+  const [direction, setDirection] = useState(true);
   const [isLandscape, setIsLandscape] = useState(false);
 
   const setInputAndStation = (
@@ -102,38 +105,66 @@ const App = (): ReactElement => {
     </div>
   );
 
+  const singleLocationInput = (
+    <div className="station-input">
+      <div className="options">
+        <PickEndStation
+          endStationInput={endStationInput}
+          setInputAndStation={setEndInputAndStation}
+          placeholder={'Destination'}
+        />
+        <p>Towards {direction ? 'Jurong East' : 'Marina South Pier'}</p>
+      </div>
+      <div
+        className="btn" onClick={() => setDirection(!direction)}
+      >
+        <HiOutlineSwitchHorizontal />
+      </div>
+    </div>
+  );
+
+  const multiLocationInput = (
+    <div className="station-input">
+      <div className="options">
+        <PickStartStation
+          startStationInput={startStationInput}
+          setInputAndStation={setStartInputAndStation}
+        />
+        <BsArrowDownShort className="down-arrow" />
+        <PickEndStation
+          endStationInput={endStationInput}
+          setInputAndStation={setEndInputAndStation}
+          placeholder={'To'}
+        />
+      </div>
+      <div
+        className="btn" onClick={swapStations}
+      >
+        <HiOutlineSwitchVertical />
+      </div>
+    </div>
+  );
+
   return (
     <div className="App">
       <div className="station-selector">
         <div
-          className={`btn column ${multiLocation ? 'multiloc' : 'singleloc'} `} onClick={() => setMultiLocation(!multiLocation)}
+          className={`btn column ${isMultiLocationMode ? 'multiloc' : 'singleloc'} `} onClick={() => setIsMultiLocationMode(!isMultiLocationMode)}
         >
           {multiLocationIcon}
           <MdLocationOn className="single-loc-icon" />
         </div>
-        <div className="station-input">
-          <div className="options">
-            <PickStartStation
-              startStationInput={startStationInput}
-              setInputAndStation={setStartInputAndStation}
-            />
-            <BsArrowDownShort className="down-arrow" />
-            <PickEndStation
-              endStationInput={endStationInput}
-              setInputAndStation={setEndInputAndStation}
-            />
-          </div>
-          <div
-            className="btn" onClick={swapStations}
-          >
-            <HiOutlineSwitchVertical />
-          </div>
-        </div>
+        {isMultiLocationMode ? multiLocationInput : singleLocationInput}
         <div className="btn" onClick={() => setIsLandscape(!isLandscape)}>
           {isLandscape ? <FcRotateToPortrait /> : <FcRotateToLandscape />}
         </div>
       </div>
-      <MainDisplay isLandscape={isLandscape} startStation={startStation} endStation={endStation} />
+      <MainDisplay
+        isLandscape={isLandscape}
+        startStation={startStation}
+        endStation={endStation}
+        direction={direction}
+      />
     </div>
   );
 };

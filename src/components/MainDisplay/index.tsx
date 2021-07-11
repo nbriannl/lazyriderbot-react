@@ -8,10 +8,11 @@ interface Props {
   isLandscape: boolean;
   startStation: string;
   endStation: string;
+  direction: boolean;
 }
 
-const MainDisplay = ({ isLandscape, startStation, endStation }: Props): ReactElement => {
-  console.log(startStation, endStation);
+const MainDisplay = ({ isLandscape, startStation, endStation, direction }: Props): ReactElement => {
+  console.log(startStation, endStation, direction);
   const numCarraiges = 6;
   const numDoors = 4;
   const isDoorOpeningSameSide = true;
@@ -20,7 +21,6 @@ const MainDisplay = ({ isLandscape, startStation, endStation }: Props): ReactEle
 
   return (
     <div className="main-display">
-
       <div className="med">
         <div className={`door-opening-info ${isDoorOpeningSameSide ? 'same-side' : 'other-side'}`}>
           <BsTriangleFill />
@@ -41,7 +41,7 @@ const MainDisplay = ({ isLandscape, startStation, endStation }: Props): ReactEle
           isLandscape={isLandscape}
           sameDirection={false}
         />
-        <Platform isLandscape={isLandscape} />
+        <Platform isLandscape={isLandscape} direction={direction} />
         <Train
           isLandscape={isLandscape}
           numCarraiges={numCarraiges}

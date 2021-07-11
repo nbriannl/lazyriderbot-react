@@ -67,7 +67,7 @@ const App = (): ReactElement => {
   const [startStation, setStartStation] = useState('');
   const [endStationInput, setEndStationInput] = useState('');
   const [endStation, setEndStation] = useState('');
-  const [isLandscape, setIsLandscape] = useState(true);
+  const [isLandscape, setIsLandscape] = useState(false);
 
   const setInputAndStation = (
     value: string,

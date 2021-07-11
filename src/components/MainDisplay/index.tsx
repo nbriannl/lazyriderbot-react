@@ -17,7 +17,8 @@ const MainDisplay = ({ isLandscape, startStation, endStation, direction }: Props
   const numDoors = 4;
   const isDoorOpeningSameSide = true;
   // 0-index
-  const bestDoorIndex = 19;
+  const bestDoorIndex = 18;
+  const oreintedBestDoorIndex = direction ? bestDoorIndex : (6 * 4) - bestDoorIndex - 1;
 
   return (
     <div className="main-display">
@@ -32,12 +33,12 @@ const MainDisplay = ({ isLandscape, startStation, endStation, direction }: Props
         </div>
         <div className="door-number">
           <p className="sub">Door</p>
-          <p className="main">{bestDoorIndex + 1}</p>
+          <p className="main">{oreintedBestDoorIndex + 1}</p>
         </div>
       </div>
       <div className={`main-info ${isLandscape ? 'landscape' : 'portrait'}`}>
         <OtherTrain
-          text={'Train towards Marina Bay'}
+          text={direction ? 'Train towards Marina Bay' : 'Train towards Jurong East'}
           isLandscape={isLandscape}
           sameDirection={false}
         />
@@ -46,7 +47,7 @@ const MainDisplay = ({ isLandscape, startStation, endStation, direction }: Props
           isLandscape={isLandscape}
           numCarraiges={numCarraiges}
           numDoors={numDoors}
-          bestDoorIndex={bestDoorIndex}
+          bestDoorIndex={oreintedBestDoorIndex}
         />
       </div>
     </div>

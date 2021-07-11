@@ -22,20 +22,20 @@ interface PlatformFeatureInfo {
 const Platform = ({ isLandscape }: Props): ReactElement => {
   const platformInfo: Array<PlatformFeatureInfo> = [
     {
-      distFromHead: 0.2,
+      distFromHead: 20,
       features: [
         PlatformFeature.Stairs,
         PlatformFeature.EscalatorEntry
       ]
     },
     {
-      distFromHead: 0.5,
+      distFromHead: 50,
       features: [
         PlatformFeature.Elevator
       ]
     },
     {
-      distFromHead: 0.8,
+      distFromHead: 80,
       features: [
         PlatformFeature.Stairs,
         PlatformFeature.EscalatorExit
@@ -63,7 +63,7 @@ const Platform = ({ isLandscape }: Props): ReactElement => {
   const renderPlatformFeature = (feature: PlatformFeatureInfo, index: number): ReactElement => {
     const { distFromHead, features } = feature;
     return (
-      <div key={index} className={`platform-feature-${distFromHead * 100}`}>
+      <div key={index} className={`platform-feature-${distFromHead}`}>
         {features.map(renderFeature)}
       </div>
     );

@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/lazyriderbot-react/static/css/main.c7b02ef9.chunk.css",
-    "main.js": "/lazyriderbot-react/static/js/main.1b75d6dc.chunk.js",
-    "main.js.map": "/lazyriderbot-react/static/js/main.1b75d6dc.chunk.js.map",
+    "main.js": "/lazyriderbot-react/static/js/main.3b6a0aca.chunk.js",
+    "main.js.map": "/lazyriderbot-react/static/js/main.3b6a0aca.chunk.js.map",
     "runtime-main.js": "/lazyriderbot-react/static/js/runtime-main.a417f45d.js",
     "runtime-main.js.map": "/lazyriderbot-react/static/js/runtime-main.a417f45d.js.map",
     "static/js/2.a4b0ac2f.chunk.js": "/lazyriderbot-react/static/js/2.a4b0ac2f.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.a417f45d.js",
     "static/js/2.a4b0ac2f.chunk.js",
     "static/css/main.c7b02ef9.chunk.css",
-    "static/js/main.1b75d6dc.chunk.js"
+    "static/js/main.3b6a0aca.chunk.js"
   ]
 }

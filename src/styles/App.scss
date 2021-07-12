@@ -76,13 +76,14 @@ p {
     }
   }
 
-  input {
+  input, select {
     background-color: #004D55;
     border: none;
     color: #fff;
     font-family: 'Merriweather Sans', sans-serif;
     font-size: 1em;
     text-align: center;
+    text-align-last: center;
     width: 15ch;
 
     &::placeholder {
@@ -90,8 +91,16 @@ p {
     }
   }
 
+  select:required:invalid {
+    color: #327177;
+  }
+
+  option[value=""][disabled] {
+    display: none;
+  }
+  
   .down-arrow {
-    padding-right: 1.25em;
+    padding-right: 0.5em;
   }
 
   span {

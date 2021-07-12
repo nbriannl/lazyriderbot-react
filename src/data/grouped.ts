@@ -1,5 +1,5 @@
-/* eslint-disable */
-const grouped = {
+/* eslint-disable max-lines */
+export const groupedByLine = {
   'North South Line': [
     {
       code: 'NS1',
@@ -775,4 +775,3 @@ const grouped = {
     }
   ]
 };
-export default grouped;

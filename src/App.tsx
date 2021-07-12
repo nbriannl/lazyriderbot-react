@@ -2,26 +2,15 @@ import { ReactElement, useState } from 'react';
 import './styles/App.scss';
 import MainDisplay from './components/MainDisplay/index';
 import StationSelector from './components/StationSelector';
-import grouped from './data/grouped';
-// import stations from './data/trainStations';
-
-// interface Station {
-//   code: string;
-//   name: string;
-// }
 
 const App = (): ReactElement => {
-  // const stationsMap: { [key: string]: Array<Station> } = {};
+  // const stationsMap: { [key: string]: Station } = {};
   // stations.forEach(s => {
   //   console.log(s);
-  //   const station = { code: s[0], name: s[1] };
-  //   if (!stationsMap[s[3]]) {
-  //     stationsMap[s[3]] = [station];
-  //   } else {
-  //     stationsMap[s[3]].push(station);
-  //   }
+  //   const station = { code: s[0], name: s[1], line: s[3] };
+  //   stationsMap[station.code] = station;
   // });
-  console.log(grouped);
+  // console.log(stationsMap);
 
   const [startStation, setStartStation] = useState('');
   const [endStation, setEndStation] = useState('');

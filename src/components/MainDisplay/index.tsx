@@ -1,5 +1,6 @@
 import { BsTriangleFill } from 'react-icons/bs';
 import { ReactElement } from 'react';
+import { hashedByCode } from '../../data/hashedByCode';
 import Platform from './Platform';
 import Train from './Train';
 import OtherTrain from './OtherTrain';
@@ -12,7 +13,10 @@ interface Props {
 }
 
 const MainDisplay = ({ isLandscape, startStation, endStation, direction }: Props): ReactElement => {
-  console.log(startStation, endStation, direction);
+  if (startStation !== '' && endStation !== '') {
+    console.log(hashedByCode[startStation].name, hashedByCode[endStation].name, direction);
+  }
+
   const numCarraiges = 6;
   const numDoors = 4;
   const isDoorOpeningSameSide = true;

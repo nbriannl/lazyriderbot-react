@@ -1,6 +1,5 @@
 import { ReactElement } from 'react';
-
-const stations = ['Yishun', 'Sembawang', 'Canberra', 'Bishan', 'Orchard', 'Somerset'];
+import { groupedByLine } from '../../data/grouped';
 
 interface EndStationSelectProps {
   startStation: string;
@@ -9,9 +8,17 @@ interface EndStationSelectProps {
 }
 
 const StartStationSelect = ({ startStation, setStation, placeholder }: EndStationSelectProps): ReactElement => {
-  const renderOption = (station: string) => {
-    return <option key={station} value={station}>{station}</option>;
+  const renderOption = (station: { code: string; name: string }) => {
+    return <option key={station.code} value={station.code}>{station.name}</option>;
   };
+
+  const options = Object.entries(groupedByLine).map(item => {
+    return (
+      <optgroup key={item[0]} label={item[0]}>
+        {item[1].map(renderOption)}
+      </optgroup>
+    );
+  });
 
   return (
     <select
@@ -24,7 +31,7 @@ const StartStationSelect = ({ startStation, setStation, placeholder }: EndStatio
       }}
     >
       <option value="" disabled>{placeholder}</option>
-      {stations.map(renderOption)}
+      {options}
     </select>
   );
 };

@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 
-const stations = ['Yishun', 'Sembawang', 'Canberra', 'Bishan', 'Orchard', 'Somerset', 'Yishun', 'Sembawang', 'Canberra', 'Bishan', 'Orchard', 'Somerset'];
+const stations = ['Yishun', 'Sembawang', 'Canberra', 'Bishan', 'Orchard', 'Somerset'];
 
 interface EndStationSelectProps {
   startStation: string;
@@ -23,7 +23,7 @@ const StartStationSelect = ({ startStation, setStation, placeholder }: EndStatio
         setStation(e.target.value);
       }}
     >
-      <option value="" disabled selected>{placeholder}</option>
+      <option value="" disabled>{placeholder}</option>
       {stations.map(renderOption)}
     </select>
   );

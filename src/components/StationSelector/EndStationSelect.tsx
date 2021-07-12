@@ -23,7 +23,7 @@ const EndStationSelect = ({ endStationInput, setStation, placeholder }: EndStati
         setStation(e.target.value);
       }}
     >
-      <option value="" disabled selected>{placeholder}</option>
+      <option value="" disabled>{placeholder}</option>
       {stations.map(renderOption)}
     </select>
   );

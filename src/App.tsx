@@ -17,6 +17,11 @@ const App = (): ReactElement => {
   // true is heading to JE
   const [direction, setDirection] = useState(true);
   const [isLandscape, setIsLandscape] = useState(false);
+  const [isMultiLocationMode, setIsMultiLocationMode] = useState(true);
+
+  const canShowMainDisplay = isMultiLocationMode ?
+    (startStation !== '' && endStation !== '') :
+    endStation !== '';
 
   return (
     <div className="App">
@@ -29,13 +34,21 @@ const App = (): ReactElement => {
         setEndStation={setEndStation}
         direction={direction}
         setDirection={setDirection}
+        isMultiLocationMode={isMultiLocationMode}
+        setIsMultiLocationMode={setIsMultiLocationMode}
       />
-      <MainDisplay
-        isLandscape={isLandscape}
-        startStation={startStation}
-        endStation={endStation}
-        direction={direction}
-      />
+      {
+        canShowMainDisplay ?
+          <MainDisplay
+            isLandscape={isLandscape}
+            startStation={startStation}
+            endStation={endStation}
+            direction={direction}
+            isMultiLocationMode={isMultiLocationMode}
+          /> :
+          <div className="introduction">{'You didn\'t pick anything'}</div>
+      }
+
     </div>
   );
 };

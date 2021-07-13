@@ -1,5 +1,5 @@
 import { BsArrowDownShort } from 'react-icons/bs';
-import { Dispatch, ReactElement, SetStateAction, useState } from 'react';
+import { Dispatch, ReactElement, SetStateAction } from 'react';
 import { FcRotateToLandscape, FcRotateToPortrait } from 'react-icons/fc';
 import { HiOutlineSwitchVertical, HiOutlineSwitchHorizontal } from 'react-icons/hi';
 import { MdLocationOn } from 'react-icons/md';
@@ -15,6 +15,8 @@ interface Props {
   setEndStation: Dispatch<SetStateAction<string>>;
   direction: boolean;
   setDirection: Dispatch<SetStateAction<boolean>>;
+  isMultiLocationMode: boolean;
+  setIsMultiLocationMode: Dispatch<SetStateAction<boolean>>;
 }
 
 const StationSelector = ({
@@ -25,10 +27,10 @@ const StationSelector = ({
   endStation,
   setEndStation,
   direction,
-  setDirection
+  setDirection,
+  isMultiLocationMode,
+  setIsMultiLocationMode
 }: Props): ReactElement => {
-  const [isMultiLocationMode, setIsMultiLocationMode] = useState(true);
-
   const swapStationsSelect = () => {
     const prevEnd = endStation;
     const prevStart = startStation;

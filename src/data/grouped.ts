@@ -1,5 +1,5 @@
 /* eslint-disable max-lines */
-export const groupedByLine = {
+export const groupedByLine: {[line: string]: Array<{code: string; name: string}>} = {
   'North South Line': [
     {
       code: 'NS1',

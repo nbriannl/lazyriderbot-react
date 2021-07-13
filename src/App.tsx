@@ -2,6 +2,8 @@ import { ReactElement, useState } from 'react';
 import './styles/App.scss';
 import MainDisplay from './components/MainDisplay/index';
 import StationSelector from './components/StationSelector';
+import { hashedByCode } from './data/hashedByCode';
+import { groupedByLine } from './data/grouped';
 
 const App = (): ReactElement => {
   // const stationsMap: { [key: string]: Station } = {};
@@ -15,13 +17,30 @@ const App = (): ReactElement => {
   const [startStation, setStartStation] = useState('');
   const [endStation, setEndStation] = useState('');
   // true is heading to JE
-  const [direction, setDirection] = useState(true);
+  const [singleLocdirection, setDirection] = useState(true);
   const [isLandscape, setIsLandscape] = useState(false);
   const [isMultiLocationMode, setIsMultiLocationMode] = useState(true);
 
+  const linesFilled = startStation !== '' && endStation !== '';
   const canShowMainDisplay = isMultiLocationMode ?
-    (startStation !== '' && endStation !== '') :
+    (linesFilled && hashedByCode[startStation].line === hashedByCode[endStation].line) :
     endStation !== '';
+
+  const findIndexWithinLine = (code: string, stations: Array<{ code: string; name: string }>) => {
+    return stations.findIndex(station => station.code === code);
+  };
+
+  const multiLocDirection = () => {
+    console.log(hashedByCode[startStation], hashedByCode[endStation]);
+    const { line } = hashedByCode[startStation];
+    const stations = groupedByLine[line];
+    const startStationIndex = findIndexWithinLine(startStation, stations);
+    const endStationIndex = findIndexWithinLine(endStation, stations);
+    console.log(startStationIndex, endStationIndex);
+    return endStationIndex < startStationIndex;
+  };
+
+  const direction = (isMultiLocationMode && linesFilled) ? multiLocDirection() : singleLocdirection;
 
   return (
     <div className="App">

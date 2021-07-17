@@ -25,9 +25,9 @@ const MainDisplay = ({ isLandscape, startStation, endStation, direction, isMulti
   const { numCarraiges, numDoors } = lineInfo(displayedStation.line as Line);
 
   const isDoorOpeningSameSide = true;
-  // 0-index
+  // 1-index
   const getOreintedBestDoorIndex = (index: number) => {
-    return direction ? index : (6 * 4) - index - 1;
+    return direction ? index - 1 : (numCarraiges * numDoors) - index;
   };
 
   const doorOpeningInfo = (

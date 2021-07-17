@@ -106,7 +106,7 @@ export const hashedByCode: Record<string, Station> = {
     info: [
       {
         type: StationFeatureType.Train,
-        bestDoorIndex: 18
+        bestDoorIndex: 19
       },
       {
         type: StationFeatureType.Platform,

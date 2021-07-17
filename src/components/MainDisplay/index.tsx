@@ -1,9 +1,9 @@
 import { BsTriangleFill } from 'react-icons/bs';
 import { ReactElement } from 'react';
-import { hashedByCode } from '../../data/hashedByCode';
+import { hashedByCode, Station } from '../../data/hashedByCode';
 import { StationFeatureType } from '../../constants/station';
-import { Station, Train as TrainType } from '../../typings/typings';
-import Platform, { PlatformFeature, PlatformInfo } from './Platform';
+import { StationInfo, Train as TrainType } from '../../typings/typings';
+import Platform from './Platform';
 import OtherTrain from './OtherTrain';
 import Train from './Train';
 
@@ -15,10 +15,11 @@ interface Props {
   isMultiLocationMode: boolean;
 }
 
-const MainDisplay = ({ isLandscape, startStation, endStation, direction, isMultiLocationMode }: Props): ReactElement => {
-  console.log('rendering main display for', hashedByCode[endStation].name, 'bound for', direction);
+const MainDisplay = ({ isLandscape, startStation, endStation, direction, isMultiLocationMode }: Props): Nullable<ReactElement> => {
+  const displayedStation = hashedByCode[endStation];
+  console.log('rendering main display for', displayedStation.name, 'bound for', direction);
   if (startStation !== '' && endStation !== '') {
-    console.log(hashedByCode[startStation].name, hashedByCode[endStation].name, direction);
+    console.log(hashedByCode[startStation].name, displayedStation.name, direction);
   }
 
   const lineInfo = {
@@ -27,44 +28,6 @@ const MainDisplay = ({ isLandscape, startStation, endStation, direction, isMulti
   };
   const { numCarraiges, numDoors } = lineInfo;
 
-  const khatibPlatform: PlatformInfo = [
-    {
-      distFromHead: 20,
-      features: [
-        PlatformFeature.Stairs,
-        PlatformFeature.EscalatorEntry
-      ]
-    },
-    {
-      distFromHead: 50,
-      features: [
-        PlatformFeature.Elevator
-      ]
-    },
-    {
-      distFromHead: 80,
-      features: [
-        PlatformFeature.Stairs,
-        PlatformFeature.EscalatorExit
-      ]
-    }
-  ];
-
-  const khatibStation: Station = [
-    {
-      type: StationFeatureType.Train,
-      bestDoorIndex: 18
-    },
-    {
-      type: StationFeatureType.Platform,
-      platformInfo: khatibPlatform
-    },
-    {
-      type: StationFeatureType.OtherTrain,
-      sameDirection: false
-    }
-  ];
-
   const isDoorOpeningSameSide = true;
   // 0-index
   const getOreintedBestDoorIndex = (index: number) => {
@@ -72,7 +35,8 @@ const MainDisplay = ({ isLandscape, startStation, endStation, direction, isMulti
   };
 
   const doorOpeningInfo = (
-    <><BsTriangleFill />
+    <>
+      <BsTriangleFill />
       <div className="door-opening-info-text">
         <p className="sub">Doors opening:</p>
         <p className="main">{isDoorOpeningSameSide ? 'Same side' : 'Other side'}</p>
@@ -85,10 +49,15 @@ const MainDisplay = ({ isLandscape, startStation, endStation, direction, isMulti
     <p className="main">Single Location</p>
   );
 
-  const suggestedBestDoorIndex = (station: Station) => {
+  const suggestedBestDoorIndex = (station: StationInfo) => {
     return (station.find(sf => sf.type === StationFeatureType.Train) as TrainType).bestDoorIndex;
   };
 
+  const stationInfo = (displayedStation as Station).info;
+  console.log(endStation, displayedStation, stationInfo);
+  if (stationInfo == null) {
+    return <div className="main-display"> No station info for {displayedStation.name}</div>;
+  }
   return (
     <div className="main-display">
       <div className="med">
@@ -97,11 +66,11 @@ const MainDisplay = ({ isLandscape, startStation, endStation, direction, isMulti
         </div>
         <div className="door-number">
           <p className="sub">Door</p>
-          <p className="main">{getOreintedBestDoorIndex(suggestedBestDoorIndex(khatibStation)) + 1}</p>
+          <p className="main">{getOreintedBestDoorIndex(suggestedBestDoorIndex(stationInfo)) + 1}</p>
         </div>
       </div>
       <div className={`main-info ${isLandscape ? 'landscape' : 'portrait'}`}>
-        {khatibStation.map(element => {
+        {stationInfo.map(element => {
           switch (element.type) {
             case StationFeatureType.Train:
               return (

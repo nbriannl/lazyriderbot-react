@@ -14,4 +14,4 @@ export type OtherTrain = {
   sameDirection: boolean;
 }
 export type StationFeature = Train | Platform | OtherTrain;
-export type Station = Array<StationFeature>;
+export type StationInfo = Array<StationFeature>;

@@ -1,8 +1,13 @@
+import { PlatformFeature } from '../components/MainDisplay/Platform';
+import { StationFeatureType } from '../constants/station';
+import { StationInfo } from '../typings/typings';
+
 /* eslint-disable max-lines */
-interface Station {
+export interface Station {
   code: string;
   name: string;
   line: string;
+  info?: StationInfo;
 }
 
 export const hashedByCode: Record<string, Station> = {
@@ -69,7 +74,42 @@ export const hashedByCode: Record<string, Station> = {
   NS14: {
     code: 'NS14',
     name: 'Khatib',
-    line: 'North South Line'
+    line: 'North South Line',
+    info: [
+      {
+        type: StationFeatureType.Train,
+        bestDoorIndex: 18
+      },
+      {
+        type: StationFeatureType.Platform,
+        platformInfo: [
+          {
+            distFromHead: 20,
+            features: [
+              PlatformFeature.Stairs,
+              PlatformFeature.EscalatorEntry
+            ]
+          },
+          {
+            distFromHead: 50,
+            features: [
+              PlatformFeature.Elevator
+            ]
+          },
+          {
+            distFromHead: 80,
+            features: [
+              PlatformFeature.Stairs,
+              PlatformFeature.EscalatorExit
+            ]
+          }
+        ]
+      },
+      {
+        type: StationFeatureType.OtherTrain,
+        sameDirection: false
+      }
+    ]
   },
   NS15: {
     code: 'NS15',

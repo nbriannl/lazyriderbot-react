@@ -1,5 +1,6 @@
 import { ReactElement } from 'react';
 import { groupedByLine } from '../../data/grouped';
+import { hashedByCode } from '../../data/hashedByCode';
 
 interface EndStationSelectProps {
   endStationInput: string;
@@ -9,6 +10,7 @@ interface EndStationSelectProps {
 
 const EndStationSelect = ({ endStationInput, setStation, placeholder }: EndStationSelectProps): ReactElement => {
   const renderOption = (station: { code: string; name: string }) => {
+    if (hashedByCode[station.code].info == null) return null;
     return <option key={station.code} value={station.code}>{station.name}</option>;
   };
 

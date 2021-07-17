@@ -14,7 +14,7 @@ interface Props {
 }
 
 const MainDisplay = ({ isLandscape, startStation, endStation, direction, isMultiLocationMode }: Props): ReactElement => {
-  console.log('rendering main display for', endStation, 'bound for', direction);
+  console.log('rendering main display for', hashedByCode[endStation].name, 'bound for', direction);
   if (startStation !== '' && endStation !== '') {
     console.log(hashedByCode[startStation].name, hashedByCode[endStation].name, direction);
   }
@@ -47,38 +47,45 @@ const MainDisplay = ({ isLandscape, startStation, endStation, direction, isMulti
       ]
     }
   ];
+  enum StationFeatureType {
+    Train = 'TRAIN',
+    Platform = 'PLATFORM',
+    OtherTrain = 'OTHER_TRAIN'
+  }
   type Train = {
-    type: 'train';
+    type: StationFeatureType.Train;
     bestDoorIndex: number;
   }
   type Platform = {
-    type: 'platform';
+    type: StationFeatureType.Platform;
     platformInfo: PlatformInfo;
   }
   type OtherTrain = {
-    type: 'other_train';
+    type: StationFeatureType.OtherTrain;
     sameDirection: boolean;
   }
   type StationFeature = Train | Platform | OtherTrain;
-  const khatibStation: Array<StationFeature> = [
+  type Station = Array<StationFeature>;
+  const khatibStation: Station = [
     {
-      type: 'train',
+      type: StationFeatureType.Train,
       bestDoorIndex: 18
     },
     {
-      type: 'platform',
+      type: StationFeatureType.Platform,
       platformInfo: khatibPlatform
     },
     {
-      type: 'other_train',
+      type: StationFeatureType.OtherTrain,
       sameDirection: false
     }
   ];
 
   const isDoorOpeningSameSide = true;
   // 0-index
-  const bestDoorIndex = 18;
-  const oreintedBestDoorIndex = direction ? bestDoorIndex : (6 * 4) - bestDoorIndex - 1;
+  const getOreintedBestDoorIndex = (index: number) => {
+    return direction ? index : (6 * 4) - index - 1;
+  };
 
   const doorOpeningInfo = (
     <><BsTriangleFill />
@@ -94,6 +101,10 @@ const MainDisplay = ({ isLandscape, startStation, endStation, direction, isMulti
     <p className="main">Single Location</p>
   );
 
+  const suggestedBestDoorIndex = (station: Station) => {
+    return (station.find(sf => sf.type === StationFeatureType.Train) as Train).bestDoorIndex;
+  };
+
   return (
     <div className="main-display">
       <div className="med">
@@ -102,22 +113,22 @@ const MainDisplay = ({ isLandscape, startStation, endStation, direction, isMulti
         </div>
         <div className="door-number">
           <p className="sub">Door</p>
-          <p className="main">{oreintedBestDoorIndex + 1}</p>
+          <p className="main">{getOreintedBestDoorIndex(suggestedBestDoorIndex(khatibStation)) + 1}</p>
         </div>
       </div>
       <div className={`main-info ${isLandscape ? 'landscape' : 'portrait'}`}>
         {khatibStation.map(element => {
           switch (element.type) {
-            case 'train':
+            case StationFeatureType.Train:
               return (
                 <Train
                   isLandscape={isLandscape}
                   numCarraiges={numCarraiges}
                   numDoors={numDoors}
-                  bestDoorIndex={oreintedBestDoorIndex}
+                  bestDoorIndex={getOreintedBestDoorIndex(element.bestDoorIndex)}
                 />
               );
-            case 'platform':
+            case StationFeatureType.Platform:
               return (
                 <Platform
                   platformInfo={element.platformInfo}
@@ -125,12 +136,12 @@ const MainDisplay = ({ isLandscape, startStation, endStation, direction, isMulti
                   direction={direction}
                 />
               );
-            case 'other_train':
+            case StationFeatureType.OtherTrain:
               return (
                 <OtherTrain
                   text={direction ? 'Train towards Marina Bay' : 'Train towards Jurong East'}
                   isLandscape={isLandscape}
-                  sameDirection={false}
+                  sameDirection={element.sameDirection}
                 />
               );
           }

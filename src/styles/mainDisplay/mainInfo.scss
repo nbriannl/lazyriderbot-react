@@ -17,5 +17,10 @@
   &.portrait {
     align-items: stretch;
     flex-direction: row;
+    overflow-x: auto;
+    width: 100%;
+    // // todo: this is so bad, only do this shit when you indicate some flag
+    // justify-content: flex-start;
+    // padding-left: 25%;
   }
 }

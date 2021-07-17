@@ -1,9 +1,11 @@
 import { BsTriangleFill } from 'react-icons/bs';
 import { ReactElement } from 'react';
 import { hashedByCode } from '../../data/hashedByCode';
+import { StationFeatureType } from '../../constants/station';
+import { Station, Train as TrainType } from '../../typings/typings';
 import Platform, { PlatformFeature, PlatformInfo } from './Platform';
-import Train from './Train';
 import OtherTrain from './OtherTrain';
+import Train from './Train';
 
 interface Props {
   isLandscape: boolean;
@@ -47,25 +49,7 @@ const MainDisplay = ({ isLandscape, startStation, endStation, direction, isMulti
       ]
     }
   ];
-  enum StationFeatureType {
-    Train = 'TRAIN',
-    Platform = 'PLATFORM',
-    OtherTrain = 'OTHER_TRAIN'
-  }
-  type Train = {
-    type: StationFeatureType.Train;
-    bestDoorIndex: number;
-  }
-  type Platform = {
-    type: StationFeatureType.Platform;
-    platformInfo: PlatformInfo;
-  }
-  type OtherTrain = {
-    type: StationFeatureType.OtherTrain;
-    sameDirection: boolean;
-  }
-  type StationFeature = Train | Platform | OtherTrain;
-  type Station = Array<StationFeature>;
+
   const khatibStation: Station = [
     {
       type: StationFeatureType.Train,
@@ -102,7 +86,7 @@ const MainDisplay = ({ isLandscape, startStation, endStation, direction, isMulti
   );
 
   const suggestedBestDoorIndex = (station: Station) => {
-    return (station.find(sf => sf.type === StationFeatureType.Train) as Train).bestDoorIndex;
+    return (station.find(sf => sf.type === StationFeatureType.Train) as TrainType).bestDoorIndex;
   };
 
   return (

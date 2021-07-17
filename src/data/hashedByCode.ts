@@ -297,6 +297,11 @@ export const hashedByCode: Record<string, Station> = {
   NS23: {
     code: 'NS23',
     name: 'Somerset',
+    line: 'North South Line'
+  },
+  NS24: {
+    code: 'NS24',
+    name: 'Dhoby Ghaut',
     line: 'North South Line',
     info: [
       {
@@ -357,11 +362,6 @@ export const hashedByCode: Record<string, Station> = {
         sameDirection: false
       }
     ]
-  },
-  NS24: {
-    code: 'NS24',
-    name: 'Dhoby Ghaut',
-    line: 'North South Line'
   },
   NS25: {
     code: 'NS25',

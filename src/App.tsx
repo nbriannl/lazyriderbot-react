@@ -22,14 +22,28 @@ const App = (): ReactElement => {
   const [isMultiLocationMode, setIsMultiLocationMode] = useState(true);
 
   const linesFilled = startStation !== '' && endStation !== '';
-  const canShowMainDisplay = isMultiLocationMode ?
-    (linesFilled && hashedByCode[startStation].line === hashedByCode[endStation].line) :
-    endStation !== '';
+  const checkCanShowMainDisplay = (): { canShowMainDisplay: boolean; instructions: string } => {
+    if (isMultiLocationMode) {
+      if (!linesFilled) {
+        return { canShowMainDisplay: false, instructions: 'Please select a start and end station' };
+      }
+      if (hashedByCode[startStation].line !== hashedByCode[endStation].line) {
+        return { canShowMainDisplay: false, instructions: 'The station selected are of different lines' };
+      }
+      return { canShowMainDisplay: true, instructions: '' };
+    }
+    if (endStation === '') {
+      return { canShowMainDisplay: false, instructions: 'Please select a destination' };
+    }
+    return { canShowMainDisplay: true, instructions: '' };
+  };
+  const { canShowMainDisplay, instructions } = checkCanShowMainDisplay();
 
   const findIndexWithinLine = (code: string, stations: Array<{ code: string; name: string }>) => {
     return stations.findIndex(station => station.code === code);
   };
 
+  // true is heading towards the first in the line
   const multiLocDirection = () => {
     console.log(hashedByCode[startStation], hashedByCode[endStation]);
     const { line } = hashedByCode[startStation];
@@ -65,7 +79,7 @@ const App = (): ReactElement => {
             direction={direction}
             isMultiLocationMode={isMultiLocationMode}
           /> :
-          <div className="introduction">{'You didn\'t pick anything'}</div>
+          <div className="introduction">{instructions}</div>
       }
 
     </div>

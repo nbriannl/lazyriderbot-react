@@ -22,7 +22,7 @@ const MainDisplay = ({ isLandscape, startStation, endStation, direction, isMulti
     console.log(hashedByCode[startStation].name, displayedStation.name, direction);
   }
 
-  const { numCarraiges, numDoors } = lineInfo(displayedStation.line as Line);
+  const { numCarraiges, numDoors, firstStation, lastStation } = lineInfo(displayedStation.line as Line);
 
   const isDoorOpeningSameSide = true;
   // 1-index
@@ -50,7 +50,6 @@ const MainDisplay = ({ isLandscape, startStation, endStation, direction, isMulti
   };
 
   const stationInfo = (displayedStation as Station).info;
-  console.log(endStation, displayedStation, stationInfo);
   if (stationInfo == null) {
     return <div className="main-display"> No station info for {displayedStation.name}</div>;
   }
@@ -91,7 +90,7 @@ const MainDisplay = ({ isLandscape, startStation, endStation, direction, isMulti
               return (
                 <OtherTrain
                   key={index}
-                  text={direction ? 'Train towards Marina Bay' : 'Train towards Jurong East'}
+                  text={direction ? `Train towards ${lastStation}` : `Train towards ${firstStation}`}
                   isLandscape={isLandscape}
                   sameDirection={element.sameDirection}
                 />

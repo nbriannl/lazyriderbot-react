@@ -1,6 +1,7 @@
 import { PlatformFeature } from '../components/MainDisplay/Platform';
 import { StationFeatureType } from '../constants/station';
 import { StationInfo } from '../typings/typings';
+import { groupedByLine } from './grouped';
 
 /* eslint-disable max-lines */
 export interface Station {
@@ -17,6 +18,8 @@ export enum Line {
 export interface LineInfo {
   numCarraiges: number;
   numDoors: number;
+  firstStation: string;
+  lastStation: string;
 }
 
 export const lineInfo = (line: Line): LineInfo => {
@@ -25,7 +28,9 @@ export const lineInfo = (line: Line): LineInfo => {
     default:
       return {
         numCarraiges: 4,
-        numDoors: 6
+        numDoors: 6,
+        firstStation: groupedByLine[line][0].name,
+        lastStation: groupedByLine[line][groupedByLine[line].length -1].name
       };
   }
 };
@@ -33,8 +38,6 @@ export const lineInfo = (line: Line): LineInfo => {
 const doorDistance = (door: number, line: Line) => {
   const { numCarraiges, numDoors } = lineInfo(line);
   const totalNumDoors = numCarraiges * numDoors - 1;
-  console.log('hey', door, totalNumDoors);
-  console.log(parseFloat(((door-1)/totalNumDoors * 100).toFixed(1)));
   return parseFloat(((door-1)/totalNumDoors * 100).toFixed(1));
 };
 
@@ -142,7 +145,42 @@ export const hashedByCode: Record<string, Station> = {
   NS15: {
     code: 'NS15',
     name: 'Yio Chu Kang',
-    line: 'North South Line'
+    line: 'North South Line',
+    info: [
+      {
+        type: StationFeatureType.Train,
+        bestDoorIndex: 18
+      },
+      {
+        type: StationFeatureType.Platform,
+        platformInfo: [
+          {
+            distFromHead: doorDistance(5.5, Line.NorthSouth),
+            features: [
+              PlatformFeature.Elevator
+            ]
+          },
+          {
+            distFromHead: doorDistance(7, Line.NorthSouth),
+            features: [
+              PlatformFeature.EscalatorExit,
+              PlatformFeature.EscalatorEntry
+            ]
+          },
+          {
+            distFromHead: doorDistance(18, Line.NorthSouth),
+            features: [
+              PlatformFeature.EscalatorEntry,
+              PlatformFeature.Stairs
+            ]
+          }
+        ]
+      },
+      {
+        type: StationFeatureType.OtherTrain,
+        sameDirection: false
+      }
+    ]
   },
   NS16: {
     code: 'NS16',

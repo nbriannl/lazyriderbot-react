@@ -306,13 +306,13 @@ export const hashedByCode: Record<string, Station> = {
     info: [
       {
         type: StationFeatureType.Train,
-        bestDoorIndex: 18
+        bestDoorIndex: 8
       },
       {
         type: StationFeatureType.Platform,
         platformInfo: [
           {
-            distFromHead: doorDistance(6.75, Line.NorthSouth),
+            distFromHead: doorDistance(5, Line.NorthSouth),
             features: [
               PlatformFeature.Stairs
             ]
@@ -325,7 +325,7 @@ export const hashedByCode: Record<string, Station> = {
             ]
           },
           {
-            distFromHead: doorDistance(11.25, Line.NorthSouth),
+            distFromHead: doorDistance(11, Line.NorthSouth),
             features: [
               PlatformFeature.Stairs
             ]
@@ -337,20 +337,20 @@ export const hashedByCode: Record<string, Station> = {
             ]
           },
           {
-            distFromHead: doorDistance(13.75, Line.NorthSouth),
+            distFromHead: doorDistance(14, Line.NorthSouth),
             features: [
               PlatformFeature.Stairs
             ]
           },
           {
-            distFromHead: doorDistance(19, Line.NorthSouth),
+            distFromHead: doorDistance(17, Line.NorthSouth),
             features: [
               PlatformFeature.EscalatorExit,
               PlatformFeature.EscalatorEntry
             ]
           },
           {
-            distFromHead: doorDistance(20.25, Line.NorthSouth),
+            distFromHead: doorDistance(20, Line.NorthSouth),
             features: [
               PlatformFeature.Stairs
             ]

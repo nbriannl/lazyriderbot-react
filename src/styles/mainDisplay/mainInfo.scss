@@ -10,12 +10,12 @@
   padding: 1em 1em 1em 1em;
 
   &.landscape {
-    flex-direction: column;
+    flex-direction: column-reverse;
     width: 100%;
   }
 
   &.portrait {
     align-items: stretch;
-    flex-direction: row-reverse;
+    flex-direction: row;
   }
 }

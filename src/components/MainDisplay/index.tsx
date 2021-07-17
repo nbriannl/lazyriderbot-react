@@ -1,7 +1,7 @@
 import { BsTriangleFill } from 'react-icons/bs';
 import { ReactElement } from 'react';
 import { hashedByCode } from '../../data/hashedByCode';
-import Platform from './Platform';
+import Platform, { PlatformFeature, PlatformInfo } from './Platform';
 import Train from './Train';
 import OtherTrain from './OtherTrain';
 
@@ -14,12 +14,67 @@ interface Props {
 }
 
 const MainDisplay = ({ isLandscape, startStation, endStation, direction, isMultiLocationMode }: Props): ReactElement => {
+  console.log('rendering main display for', endStation, 'bound for', direction);
   if (startStation !== '' && endStation !== '') {
     console.log(hashedByCode[startStation].name, hashedByCode[endStation].name, direction);
   }
 
-  const numCarraiges = 6;
-  const numDoors = 4;
+  const lineInfo = {
+    numCarraiges: 6,
+    numDoors: 4
+  };
+  const { numCarraiges, numDoors } = lineInfo;
+
+  const khatibPlatform: PlatformInfo = [
+    {
+      distFromHead: 20,
+      features: [
+        PlatformFeature.Stairs,
+        PlatformFeature.EscalatorEntry
+      ]
+    },
+    {
+      distFromHead: 50,
+      features: [
+        PlatformFeature.Elevator
+      ]
+    },
+    {
+      distFromHead: 80,
+      features: [
+        PlatformFeature.Stairs,
+        PlatformFeature.EscalatorExit
+      ]
+    }
+  ];
+  type Train = {
+    type: 'train';
+    bestDoorIndex: number;
+  }
+  type Platform = {
+    type: 'platform';
+    platformInfo: PlatformInfo;
+  }
+  type OtherTrain = {
+    type: 'other_train';
+    sameDirection: boolean;
+  }
+  type StationFeature = Train | Platform | OtherTrain;
+  const khatibStation: Array<StationFeature> = [
+    {
+      type: 'train',
+      bestDoorIndex: 18
+    },
+    {
+      type: 'platform',
+      platformInfo: khatibPlatform
+    },
+    {
+      type: 'other_train',
+      sameDirection: false
+    }
+  ];
+
   const isDoorOpeningSameSide = true;
   // 0-index
   const bestDoorIndex = 18;
@@ -51,18 +106,35 @@ const MainDisplay = ({ isLandscape, startStation, endStation, direction, isMulti
         </div>
       </div>
       <div className={`main-info ${isLandscape ? 'landscape' : 'portrait'}`}>
-        <OtherTrain
-          text={direction ? 'Train towards Marina Bay' : 'Train towards Jurong East'}
-          isLandscape={isLandscape}
-          sameDirection={false}
-        />
-        <Platform isLandscape={isLandscape} direction={direction} />
-        <Train
-          isLandscape={isLandscape}
-          numCarraiges={numCarraiges}
-          numDoors={numDoors}
-          bestDoorIndex={oreintedBestDoorIndex}
-        />
+        {khatibStation.map(element => {
+          switch (element.type) {
+            case 'train':
+              return (
+                <Train
+                  isLandscape={isLandscape}
+                  numCarraiges={numCarraiges}
+                  numDoors={numDoors}
+                  bestDoorIndex={oreintedBestDoorIndex}
+                />
+              );
+            case 'platform':
+              return (
+                <Platform
+                  platformInfo={element.platformInfo}
+                  isLandscape={isLandscape}
+                  direction={direction}
+                />
+              );
+            case 'other_train':
+              return (
+                <OtherTrain
+                  text={direction ? 'Train towards Marina Bay' : 'Train towards Jurong East'}
+                  isLandscape={isLandscape}
+                  sameDirection={false}
+                />
+              );
+          }
+        })}
       </div>
     </div>
   );

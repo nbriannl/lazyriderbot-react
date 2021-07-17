@@ -1,13 +1,7 @@
 import { ReactElement } from 'react';
 import { IconElevator, IconEscalatorEntry, IconEscalatorExit, IconEscalatorInternalTransfer, IconStairs, IconStairsInternal } from './PlatformIcons';
 
-interface Props {
-  isLandscape: boolean;
-  direction: boolean;
-}
-
-
-enum PlatformFeature {
+export enum PlatformFeature {
   Elevator,
   EscalatorExit,
   EscalatorEntry,
@@ -16,36 +10,21 @@ enum PlatformFeature {
   StairInternalTansfer
 }
 
-interface PlatformFeatureInfo {
+export interface PlatformFeatureInfo {
   distFromHead: number;
   features: Array<PlatformFeature>;
 }
 
-const khatib: Array<PlatformFeatureInfo> = [
-  {
-    distFromHead: 20,
-    features: [
-      PlatformFeature.Stairs,
-      PlatformFeature.EscalatorEntry
-    ]
-  },
-  {
-    distFromHead: 50,
-    features: [
-      PlatformFeature.Elevator
-    ]
-  },
-  {
-    distFromHead: 80,
-    features: [
-      PlatformFeature.Stairs,
-      PlatformFeature.EscalatorExit
-    ]
-  }
-];
+export type PlatformInfo = Array<PlatformFeatureInfo>;
 
-const Platform = ({ isLandscape, direction }: Props): ReactElement => {
-  const platformInfo = khatib;
+
+interface Props {
+  platformInfo: PlatformInfo;
+  isLandscape: boolean;
+  direction: boolean;
+}
+
+const Platform = ({ isLandscape, direction, platformInfo }: Props): ReactElement => {
   const renderFeature = (feature: PlatformFeature, index: number): ReactElement => {
     switch (feature) {
       case PlatformFeature.Elevator:

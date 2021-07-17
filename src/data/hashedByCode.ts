@@ -10,6 +10,34 @@ export interface Station {
   info?: StationInfo;
 }
 
+export enum Line {
+  NorthSouth = 'North South Line'
+}
+
+export interface LineInfo {
+  numCarraiges: number;
+  numDoors: number;
+}
+
+export const lineInfo = (line: Line): LineInfo => {
+  switch (line) {
+    case Line.NorthSouth:
+    default:
+      return {
+        numCarraiges: 4,
+        numDoors: 6
+      };
+  }
+};
+
+const doorDistance = (door: number, line: Line) => {
+  const { numCarraiges, numDoors } = lineInfo(line);
+  const totalNumDoors = numCarraiges * numDoors - 1;
+  console.log('hey', door, totalNumDoors);
+  console.log(parseFloat(((door-1)/totalNumDoors * 100).toFixed(1)));
+  return parseFloat(((door-1)/totalNumDoors * 100).toFixed(1));
+};
+
 export const hashedByCode: Record<string, Station> = {
   NS1: {
     code: 'NS1',
@@ -84,20 +112,20 @@ export const hashedByCode: Record<string, Station> = {
         type: StationFeatureType.Platform,
         platformInfo: [
           {
-            distFromHead: 20,
+            distFromHead: doorDistance(6, Line.NorthSouth),
             features: [
               PlatformFeature.Stairs,
               PlatformFeature.EscalatorEntry
             ]
           },
           {
-            distFromHead: 50,
+            distFromHead: doorDistance(12.5, Line.NorthSouth),
             features: [
               PlatformFeature.Elevator
             ]
           },
           {
-            distFromHead: 80,
+            distFromHead: doorDistance(19, Line.NorthSouth),
             features: [
               PlatformFeature.Stairs,
               PlatformFeature.EscalatorExit

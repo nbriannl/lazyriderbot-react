@@ -46,10 +46,10 @@
 
   /* warning: this is generally a bad idea */
   // https://stackoverflow.com/questions/39518374/scss-variable-class-name/39518851
-  @for $i from 1 through 100 {
+  @for $i from 1 through 1000 {
     .platform-feature-#{$i} {
       // to-do: replace 2em with variable
-      left: calc((#{$i} / 100) * (100% - 2em));
+      left: calc((#{$i} / 1000) * (100% - 2em));
     }
   }
 }
@@ -82,10 +82,10 @@
 
   /* warning: this is generally a bad idea */
   // https://stackoverflow.com/questions/39518374/scss-variable-class-name/39518851
-  @for $i from 1 through 100 {
+  @for $i from 1 through 1000 {
     .platform-feature-#{$i} {
       // to-do: replace 2em with variable
-      top: calc((#{$i} / 100) * (100% - 2em));
+      top: calc((#{$i} / 1000) * (100% - 2em));
     }
   }
 }

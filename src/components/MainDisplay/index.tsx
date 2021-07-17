@@ -1,6 +1,6 @@
 import { BsTriangleFill } from 'react-icons/bs';
 import { ReactElement } from 'react';
-import { hashedByCode, Station } from '../../data/hashedByCode';
+import { hashedByCode, Line, lineInfo, Station } from '../../data/hashedByCode';
 import { StationFeatureType } from '../../constants/station';
 import { StationInfo, Train as TrainType } from '../../typings/typings';
 import Platform from './Platform';
@@ -22,11 +22,7 @@ const MainDisplay = ({ isLandscape, startStation, endStation, direction, isMulti
     console.log(hashedByCode[startStation].name, displayedStation.name, direction);
   }
 
-  const lineInfo = {
-    numCarraiges: 6,
-    numDoors: 4
-  };
-  const { numCarraiges, numDoors } = lineInfo;
+  const { numCarraiges, numDoors } = lineInfo(displayedStation.line as Line);
 
   const isDoorOpeningSameSide = true;
   // 0-index
@@ -70,11 +66,12 @@ const MainDisplay = ({ isLandscape, startStation, endStation, direction, isMulti
         </div>
       </div>
       <div className={`main-info ${isLandscape ? 'landscape' : 'portrait'}`}>
-        {stationInfo.map(element => {
+        {stationInfo.map((element, index) => {
           switch (element.type) {
             case StationFeatureType.Train:
               return (
                 <Train
+                  key={index}
                   isLandscape={isLandscape}
                   numCarraiges={numCarraiges}
                   numDoors={numDoors}
@@ -84,6 +81,7 @@ const MainDisplay = ({ isLandscape, startStation, endStation, direction, isMulti
             case StationFeatureType.Platform:
               return (
                 <Platform
+                  key={index}
                   platformInfo={element.platformInfo}
                   isLandscape={isLandscape}
                   direction={direction}
@@ -92,6 +90,7 @@ const MainDisplay = ({ isLandscape, startStation, endStation, direction, isMulti
             case StationFeatureType.OtherTrain:
               return (
                 <OtherTrain
+                  key={index}
                   text={direction ? 'Train towards Marina Bay' : 'Train towards Jurong East'}
                   isLandscape={isLandscape}
                   sameDirection={element.sameDirection}

@@ -2,7 +2,7 @@ import { ReactElement, useState } from 'react';
 import './styles/App.scss';
 import MainDisplay from './components/MainDisplay/index';
 import StationSelector from './components/StationSelector';
-import { hashedByCode } from './data/hashedByCode';
+import { hashedByCode } from './data/hashedByCodeSource';
 import { groupedByLine } from './data/grouped';
 
 const App = (): ReactElement => {

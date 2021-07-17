@@ -45,8 +45,9 @@ const Platform = ({ isLandscape, direction, platformInfo }: Props): ReactElement
   const renderPlatformFeature = (feature: PlatformFeatureInfo, index: number): ReactElement => {
     const { distFromHead, features } = feature;
     const distFromHeadOriented = direction ? distFromHead : (100 - distFromHead);
+    const rounded = Math.round(distFromHeadOriented * 10);
     return (
-      <div key={index} className={`platform-feature platform-feature-${distFromHeadOriented}`}>
+      <div key={index} className={`platform-feature platform-feature-${rounded}`}>
         {features.map(renderFeature)}
       </div>
     );

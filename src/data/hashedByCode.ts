@@ -297,7 +297,66 @@ export const hashedByCode: Record<string, Station> = {
   NS23: {
     code: 'NS23',
     name: 'Somerset',
-    line: 'North South Line'
+    line: 'North South Line',
+    info: [
+      {
+        type: StationFeatureType.Train,
+        bestDoorIndex: 18
+      },
+      {
+        type: StationFeatureType.Platform,
+        platformInfo: [
+          {
+            distFromHead: doorDistance(6.75, Line.NorthSouth),
+            features: [
+              PlatformFeature.Stairs
+            ]
+          },
+          {
+            distFromHead: doorDistance(8, Line.NorthSouth),
+            features: [
+              PlatformFeature.EscalatorExit,
+              PlatformFeature.EscalatorEntry
+            ]
+          },
+          {
+            distFromHead: doorDistance(11.25, Line.NorthSouth),
+            features: [
+              PlatformFeature.Stairs
+            ]
+          },
+          {
+            distFromHead: doorDistance(12.5, Line.NorthSouth),
+            features: [
+              PlatformFeature.Elevator
+            ]
+          },
+          {
+            distFromHead: doorDistance(13.75, Line.NorthSouth),
+            features: [
+              PlatformFeature.Stairs
+            ]
+          },
+          {
+            distFromHead: doorDistance(19, Line.NorthSouth),
+            features: [
+              PlatformFeature.EscalatorExit,
+              PlatformFeature.EscalatorEntry
+            ]
+          },
+          {
+            distFromHead: doorDistance(20.25, Line.NorthSouth),
+            features: [
+              PlatformFeature.Stairs
+            ]
+          }
+        ]
+      },
+      {
+        type: StationFeatureType.OtherTrain,
+        sameDirection: false
+      }
+    ]
   },
   NS24: {
     code: 'NS24',

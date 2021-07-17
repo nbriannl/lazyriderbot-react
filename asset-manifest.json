@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/lazyriderbot-react/static/css/main.2a2cb082.chunk.css",
-    "main.js": "/lazyriderbot-react/static/js/main.cda2218e.chunk.js",
-    "main.js.map": "/lazyriderbot-react/static/js/main.cda2218e.chunk.js.map",
+    "main.css": "/lazyriderbot-react/static/css/main.36b7b278.chunk.css",
+    "main.js": "/lazyriderbot-react/static/js/main.8d56746a.chunk.js",
+    "main.js.map": "/lazyriderbot-react/static/js/main.8d56746a.chunk.js.map",
     "runtime-main.js": "/lazyriderbot-react/static/js/runtime-main.a417f45d.js",
     "runtime-main.js.map": "/lazyriderbot-react/static/js/runtime-main.a417f45d.js.map",
     "static/js/2.8fdcbcbf.chunk.js": "/lazyriderbot-react/static/js/2.8fdcbcbf.chunk.js",
@@ -10,13 +10,13 @@
     "static/js/3.8696a720.chunk.js": "/lazyriderbot-react/static/js/3.8696a720.chunk.js",
     "static/js/3.8696a720.chunk.js.map": "/lazyriderbot-react/static/js/3.8696a720.chunk.js.map",
     "index.html": "/lazyriderbot-react/index.html",
-    "static/css/main.2a2cb082.chunk.css.map": "/lazyriderbot-react/static/css/main.2a2cb082.chunk.css.map",
+    "static/css/main.36b7b278.chunk.css.map": "/lazyriderbot-react/static/css/main.36b7b278.chunk.css.map",
     "static/js/2.8fdcbcbf.chunk.js.LICENSE.txt": "/lazyriderbot-react/static/js/2.8fdcbcbf.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.a417f45d.js",
     "static/js/2.8fdcbcbf.chunk.js",
-    "static/css/main.2a2cb082.chunk.css",
-    "static/js/main.cda2218e.chunk.js"
+    "static/css/main.36b7b278.chunk.css",
+    "static/js/main.8d56746a.chunk.js"
   ]
 }

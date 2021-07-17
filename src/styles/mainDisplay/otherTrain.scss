@@ -14,6 +14,10 @@
     flex-direction: row;
   }
 
+  .no-direction {
+    margin: 0.25em 1.5em 0.25em 1.5em;
+  }
+
   .other-direction {
     margin: 0.25em 0 0.25em 1.5em;
   }
@@ -26,6 +30,10 @@
 .portrait {
   .other-train-2 {
     flex-direction: column;
+  }
+
+  .no-direction {
+    margin: 1.5em 0.25em 1.5em 0.25em;
   }
 
   .other-direction {

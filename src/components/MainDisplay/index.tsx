@@ -6,6 +6,7 @@ import { StationInfo, Train as TrainType } from '../../typings/typings';
 import Platform from './Platform';
 import OtherTrain from './OtherTrain';
 import Train from './Train';
+import SpecialTrack from './SpecialTrack';
 
 interface Props {
   isLandscape: boolean;
@@ -91,6 +92,15 @@ const MainDisplay = ({ isLandscape, startStation, endStation, direction, isMulti
                 <OtherTrain
                   key={index}
                   text={direction ? `Train towards ${lastStation}` : `Train towards ${firstStation}`}
+                  isLandscape={isLandscape}
+                  sameDirection={element.sameDirection}
+                />
+              );
+            case StationFeatureType.SpecialTrack:
+              return (
+                <SpecialTrack
+                  key={index}
+                  text={element.message}
                   isLandscape={isLandscape}
                   sameDirection={element.sameDirection}
                 />

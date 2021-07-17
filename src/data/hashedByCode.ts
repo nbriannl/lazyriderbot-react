@@ -223,8 +223,9 @@ export const hashedByCode: Record<string, Station> = {
         ]
       },
       {
-        type: StationFeatureType.OtherTrain,
-        sameDirection: false
+        type: StationFeatureType.SpecialTrack,
+        sameDirection: null,
+        message: 'To Depot'
       },
       {
         type: StationFeatureType.Platform,

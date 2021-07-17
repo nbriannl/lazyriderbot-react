@@ -13,5 +13,10 @@ export type OtherTrain = {
   type: StationFeatureType.OtherTrain;
   sameDirection: boolean;
 }
-export type StationFeature = Train | Platform | OtherTrain;
+export type SpecialTrack = {
+  type: StationFeatureType.SpecialTrack;
+  sameDirection: null | boolean;
+  message: string;
+}
+export type StationFeature = Train | Platform | OtherTrain | SpecialTrack;
 export type StationInfo = Array<StationFeature>;

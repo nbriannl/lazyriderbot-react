@@ -112,6 +112,10 @@ const MainDisplay = ({ isLandscape, startStation, endStation, direction, isMulti
               sameDirection={element.sameDirection}
             />
           );
+        case StationFeatureType.Wall:
+          return (
+            <div className="wall" />
+          );
       }
     });
   };

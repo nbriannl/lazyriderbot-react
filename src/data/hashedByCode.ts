@@ -272,7 +272,97 @@ export const hashedByCode: Record<string, Station> = {
   NS17: {
     code: 'NS17',
     name: 'Bishan',
-    line: 'North South Line'
+    line: 'North South Line',
+    info: [
+      {
+        type: StationFeatureType.Train,
+        bestDoorIndexes: [17]
+      },
+      {
+        type: StationFeatureType.Platform,
+        platformInfo: [
+          {
+            distFromHead: doorDistance(5, Line.NorthSouth),
+            features: [
+              PlatformFeature.StairInternalTansfer
+            ]
+          },
+          {
+            distFromHead: doorDistance(7.75, Line.NorthSouth),
+            features: [
+              PlatformFeature.EscalatorEntry
+            ]
+          },
+          {
+            distFromHead: doorDistance(9, Line.NorthSouth),
+            features: [
+              PlatformFeature.EscalatorEntry,
+              PlatformFeature.Stairs
+            ]
+          },
+          {
+            distFromHead: doorDistance(16, Line.NorthSouth),
+            features: [
+              PlatformFeature.EscalatorExit,
+              PlatformFeature.Stairs
+            ]
+          },
+          {
+            distFromHead: doorDistance(17.25, Line.NorthSouth),
+            features: [
+              PlatformFeature.OtherLineCC,
+              PlatformFeature.EscalatorExit
+            ]
+          }
+        ]
+      },
+      {
+        type: StationFeatureType.Wall
+      },
+      {
+        type: StationFeatureType.OtherTrain,
+        sameDirection: false,
+        bestDoorIndexes: [getFlippedDoorIndex(4, Line.NorthSouth), getFlippedDoorIndex(9, Line.NorthSouth)]
+      },
+      {
+        type: StationFeatureType.Platform,
+        platformInfo: [
+          {
+            distFromHead: doorDistance(getFlippedDoorIndex(22, Line.NorthSouth), Line.NorthSouth),
+            features: [
+              PlatformFeature.OtherLineCC,
+              PlatformFeature.EscalatorExit,
+              PlatformFeature.Stairs,
+              PlatformFeature.EscalatorEntry
+            ]
+          },
+          {
+            distFromHead: doorDistance(getFlippedDoorIndex(16, Line.NorthSouth), Line.NorthSouth),
+            features: [
+              PlatformFeature.Stairs,
+              PlatformFeature.EscalatorEntry,
+              PlatformFeature.EscalatorEntry,
+              PlatformFeature.Stairs,
+              PlatformFeature.EscalatorExit
+            ]
+          },
+          {
+            distFromHead: doorDistance(getFlippedDoorIndex(11, Line.NorthSouth), Line.NorthSouth),
+            features: [
+              PlatformFeature.Stairs,
+              PlatformFeature.Elevator
+            ]
+          },
+          {
+            distFromHead: doorDistance(getFlippedDoorIndex(9, Line.NorthSouth), Line.NorthSouth),
+            features: [
+              PlatformFeature.Stairs,
+              PlatformFeature.EscalatorEntry
+            ]
+          }
+        ]
+      }
+    ]
   },
   NS18: {
     code: 'NS18',

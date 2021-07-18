@@ -17,9 +17,15 @@ export const IconEscalatorEntry = (): ReactElement => {
 export const IconEscalatorInternalTransfer = (): ReactElement => {
   return (
     <>
-      <GrTrain className="train-transfer" />
-      <GrEscalator className="escalator-internal-transfer" />
+      <GrTrain className={'train-transfer'} />
+      <GrEscalator className={'escalator-internal-transfer'} />
     </>
+  );
+};
+
+export const IconOtherLineCC = (): ReactElement => {
+  return (
+    <GrTrain className={'train-transfer cc-transfer'} />
   );
 };
 

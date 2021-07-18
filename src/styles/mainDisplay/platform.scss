@@ -19,6 +19,13 @@
       }
     }
   }
+
+  svg.cc-transfer {
+    color: $color-cc;
+      path {
+      stroke: $color-cc;
+      }
+  }
 }
 
 .landscape {

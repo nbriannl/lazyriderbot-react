@@ -1,11 +1,12 @@
 import { ReactElement } from 'react';
-import { IconElevator, IconEscalatorEntry, IconEscalatorExit, IconEscalatorInternalTransfer, IconStairs, IconStairsInternal } from './PlatformIcons';
+import { IconElevator, IconEscalatorEntry, IconEscalatorExit, IconEscalatorInternalTransfer, IconOtherLineCC, IconStairs, IconStairsInternal } from './PlatformIcons';
 
 export enum PlatformFeature {
   Elevator,
   EscalatorExit,
   EscalatorEntry,
   EscalatorInternalTransfer,
+  OtherLineCC,
   Stairs,
   StairInternalTansfer
 }
@@ -16,7 +17,6 @@ export interface PlatformFeatureInfo {
 }
 
 export type PlatformInfo = Array<PlatformFeatureInfo>;
-
 
 interface Props {
   platformInfo: PlatformInfo;
@@ -35,6 +35,8 @@ const Platform = ({ isLandscape, direction, platformInfo }: Props): ReactElement
         return <IconEscalatorEntry key={index} />;
       case PlatformFeature.EscalatorInternalTransfer:
         return <IconEscalatorInternalTransfer key={index} />;
+      case PlatformFeature.OtherLineCC:
+        return <IconOtherLineCC key={index} />;
       case PlatformFeature.Stairs:
         return <IconStairs key={index} />;
       case PlatformFeature.StairInternalTansfer:

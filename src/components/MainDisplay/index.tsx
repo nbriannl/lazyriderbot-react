@@ -90,7 +90,7 @@ const MainDisplay = ({ isLandscape, startStation, endStation, direction, isMulti
           return direction ? (
             <OtherTrain
               key={index}
-              text={direction ? `Train towards ${lastStation}` : `Train towards ${firstStation}`}
+              text={`Train towards ${lastStation}`}
               isLandscape={isLandscape}
               sameDirection={element.sameDirection}
             />

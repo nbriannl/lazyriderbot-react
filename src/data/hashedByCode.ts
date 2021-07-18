@@ -110,7 +110,7 @@ export const hashedByCode: Record<string, Station> = {
     info: [
       {
         type: StationFeatureType.Train,
-        bestDoorIndex: 19
+        bestDoorIndexes: [19]
       },
       {
         type: StationFeatureType.Platform,
@@ -140,7 +140,7 @@ export const hashedByCode: Record<string, Station> = {
       {
         type: StationFeatureType.OtherTrain,
         sameDirection: false,
-        bestDoorIndex: getFlippedDoorIndex(19, Line.NorthSouth)
+        bestDoorIndexes: [getFlippedDoorIndex(19, Line.NorthSouth)]
       }
     ]
   },
@@ -151,7 +151,7 @@ export const hashedByCode: Record<string, Station> = {
     info: [
       {
         type: StationFeatureType.Train,
-        bestDoorIndex: 7
+        bestDoorIndexes: [7]
       },
       {
         type: StationFeatureType.Platform,
@@ -181,7 +181,7 @@ export const hashedByCode: Record<string, Station> = {
       {
         type: StationFeatureType.OtherTrain,
         sameDirection: false,
-        bestDoorIndex: getFlippedDoorIndex(7, Line.NorthSouth)
+        bestDoorIndexes: [getFlippedDoorIndex(7, Line.NorthSouth)]
       }
     ]
   },
@@ -192,7 +192,7 @@ export const hashedByCode: Record<string, Station> = {
     info: [
       {
         type: StationFeatureType.Train,
-        bestDoorIndex: 17
+        bestDoorIndexes: [8, 17]
       },
       {
         type: StationFeatureType.Platform,
@@ -265,7 +265,7 @@ export const hashedByCode: Record<string, Station> = {
       {
         type: StationFeatureType.OtherTrain,
         sameDirection: false,
-        bestDoorIndex: 17
+        bestDoorIndexes: [getFlippedDoorIndex(8, Line.NorthSouth)]
       }
     ]
   },
@@ -311,7 +311,7 @@ export const hashedByCode: Record<string, Station> = {
     info: [
       {
         type: StationFeatureType.Train,
-        bestDoorIndex: 8
+        bestDoorIndexes: [8, 17]
       },
       {
         type: StationFeatureType.Platform,
@@ -365,7 +365,7 @@ export const hashedByCode: Record<string, Station> = {
       {
         type: StationFeatureType.OtherTrain,
         sameDirection: false,
-        bestDoorIndex: 24-8+1
+        bestDoorIndexes: [8, 17]
       }
     ]
   },

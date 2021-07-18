@@ -5,10 +5,10 @@ interface Props {
   isLandscape: boolean;
   numCarraiges: number;
   numDoors: number;
-  bestDoorIndex: number;
+  bestDoorIndexes: Array<number>;
 }
 
-const Train = ({ isLandscape, numCarraiges, numDoors, bestDoorIndex }: Props): ReactElement => {
+const Train = ({ isLandscape, numCarraiges, numDoors, bestDoorIndexes }: Props): ReactElement => {
   return (
     <div className="train-info">
       {
@@ -23,7 +23,8 @@ const Train = ({ isLandscape, numCarraiges, numDoors, bestDoorIndex }: Props): R
               <div key={i} className="carraige">{
                 [...Array(numDoors)].map((door, j) => {
                   // 1-index
-                  const isBestDoor = (i) * numDoors + j + 1 === bestDoorIndex;
+                  console.log('hey2', bestDoorIndexes);
+                  const isBestDoor = bestDoorIndexes.includes((i) * numDoors + j + 1);
                   return <div key={`${(i) * numDoors + j + 1}`} className={`door ${isBestDoor ? 'best' : ''}`} />;
                 })
               }

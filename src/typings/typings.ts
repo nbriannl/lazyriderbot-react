@@ -3,7 +3,7 @@ import { StationFeatureType } from '../constants/station';
 
 export type Train = {
   type: StationFeatureType.Train;
-  bestDoorIndex: number;
+  bestDoorIndexes: Array<number>;
 }
 export type Platform = {
   type: StationFeatureType.Platform;
@@ -12,7 +12,7 @@ export type Platform = {
 export type OtherTrain = {
   type: StationFeatureType.OtherTrain;
   sameDirection: boolean;
-  bestDoorIndex: number;
+  bestDoorIndexes: Array<number>;
 }
 export type SpecialTrack = {
   type: StationFeatureType.SpecialTrack;

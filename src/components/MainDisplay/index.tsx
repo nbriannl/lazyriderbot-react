@@ -50,7 +50,7 @@ const MainDisplay = ({ isLandscape, startStation, endStation, direction, isMulti
   );
 
   const suggestedBestDoorIndex = (station: StationInfo) => {
-    const suggested = (station.find(sf => sf.type === StationFeatureType.Train) as TrainType).bestDoorIndex;
+    const suggested = (station.find(sf => sf.type === StationFeatureType.Train) as TrainType).bestDoorIndexes[0];
     console.log('suggested best door', suggested);
     return suggested;
   };
@@ -67,7 +67,7 @@ const MainDisplay = ({ isLandscape, startStation, endStation, direction, isMulti
               isLandscape={isLandscape}
               numCarraiges={numCarraiges}
               numDoors={numDoors}
-              bestDoorIndex={element.bestDoorIndex}
+              bestDoorIndexes={element.bestDoorIndexes}
             />
           ) : (
             <OtherTrain
@@ -100,7 +100,7 @@ const MainDisplay = ({ isLandscape, startStation, endStation, direction, isMulti
               isLandscape={isLandscape}
               numCarraiges={numCarraiges}
               numDoors={numDoors}
-              bestDoorIndex={element.bestDoorIndex}
+              bestDoorIndexes={element.bestDoorIndexes}
             />
           );
         case StationFeatureType.SpecialTrack:

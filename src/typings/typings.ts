@@ -12,6 +12,7 @@ export type Platform = {
 export type OtherTrain = {
   type: StationFeatureType.OtherTrain;
   sameDirection: boolean;
+  bestDoorIndex: number;
 }
 export type SpecialTrack = {
   type: StationFeatureType.SpecialTrack;

@@ -3,6 +3,7 @@ import { ReactElement } from 'react';
 import { hashedByCode, Line, lineInfo, Station } from '../../data/hashedByCode';
 import { StationFeatureType } from '../../constants/station';
 import { StationInfo, Train as TrainType } from '../../typings/typings';
+import { getFlippedDoorIndex } from '../../utils/utils';
 import Platform from './Platform';
 import OtherTrain from './OtherTrain';
 import Train from './Train';
@@ -28,7 +29,9 @@ const MainDisplay = ({ isLandscape, startStation, endStation, direction, isMulti
   const isDoorOpeningSameSide = true;
   // 1-index
   const getOreintedBestDoorIndex = (index: number) => {
-    return direction ? index - 1 : (numCarraiges * numDoors) - index;
+    const orientedIndex = direction ? index : getFlippedDoorIndex(index, displayedStation.line as Line);
+    console.log('oriented?', direction, orientedIndex);
+    return orientedIndex;
   };
 
   const doorOpeningInfo = (
@@ -47,7 +50,70 @@ const MainDisplay = ({ isLandscape, startStation, endStation, direction, isMulti
   );
 
   const suggestedBestDoorIndex = (station: StationInfo) => {
-    return (station.find(sf => sf.type === StationFeatureType.Train) as TrainType).bestDoorIndex;
+    const suggested = (station.find(sf => sf.type === StationFeatureType.Train) as TrainType).bestDoorIndex;
+    console.log('suggested best door', suggested);
+    return suggested;
+  };
+
+  const renderStation = (info: StationInfo) => {
+    const orientedInfo = direction ? info : info.slice().reverse();
+    console.log(`${direction ? 'towards JE' : 'towards MSP'}`, orientedInfo.map(i => i.type));
+    return orientedInfo.map((element, index) => {
+      switch (element.type) {
+        case StationFeatureType.Train:
+          return direction ? (
+            <Train
+              key={index}
+              isLandscape={isLandscape}
+              numCarraiges={numCarraiges}
+              numDoors={numDoors}
+              bestDoorIndex={element.bestDoorIndex}
+            />
+          ) : (
+            <OtherTrain
+              key={index}
+              text={`Train towards ${firstStation}`}
+              isLandscape={isLandscape}
+              sameDirection={false}
+            />
+          );
+        case StationFeatureType.Platform:
+          return (
+            <Platform
+              key={index}
+              platformInfo={element.platformInfo}
+              isLandscape={isLandscape}
+              direction={direction}
+            />
+          );
+        case StationFeatureType.OtherTrain:
+          return direction ? (
+            <OtherTrain
+              key={index}
+              text={direction ? `Train towards ${lastStation}` : `Train towards ${firstStation}`}
+              isLandscape={isLandscape}
+              sameDirection={element.sameDirection}
+            />
+          ) : (
+            <Train
+              key={index}
+              isLandscape={isLandscape}
+              numCarraiges={numCarraiges}
+              numDoors={numDoors}
+              bestDoorIndex={element.bestDoorIndex}
+            />
+          );
+        case StationFeatureType.SpecialTrack:
+          return (
+            <SpecialTrack
+              key={index}
+              text={element.message}
+              isLandscape={isLandscape}
+              sameDirection={element.sameDirection}
+            />
+          );
+      }
+    });
   };
 
   const stationInfo = (displayedStation as Station).info;
@@ -62,51 +128,11 @@ const MainDisplay = ({ isLandscape, startStation, endStation, direction, isMulti
         </div>
         <div className="door-number">
           <p className="sub">Door</p>
-          <p className="main">{getOreintedBestDoorIndex(suggestedBestDoorIndex(stationInfo)) + 1}</p>
+          <p className="main">{getOreintedBestDoorIndex(suggestedBestDoorIndex(stationInfo))}</p>
         </div>
       </div>
       <div className={`main-info ${isLandscape ? 'landscape' : 'portrait'}`}>
-        {stationInfo.map((element, index) => {
-          switch (element.type) {
-            case StationFeatureType.Train:
-              return (
-                <Train
-                  key={index}
-                  isLandscape={isLandscape}
-                  numCarraiges={numCarraiges}
-                  numDoors={numDoors}
-                  bestDoorIndex={getOreintedBestDoorIndex(element.bestDoorIndex)}
-                />
-              );
-            case StationFeatureType.Platform:
-              return (
-                <Platform
-                  key={index}
-                  platformInfo={element.platformInfo}
-                  isLandscape={isLandscape}
-                  direction={direction}
-                />
-              );
-            case StationFeatureType.OtherTrain:
-              return (
-                <OtherTrain
-                  key={index}
-                  text={direction ? `Train towards ${lastStation}` : `Train towards ${firstStation}`}
-                  isLandscape={isLandscape}
-                  sameDirection={element.sameDirection}
-                />
-              );
-            case StationFeatureType.SpecialTrack:
-              return (
-                <SpecialTrack
-                  key={index}
-                  text={element.message}
-                  isLandscape={isLandscape}
-                  sameDirection={element.sameDirection}
-                />
-              );
-          }
-        })}
+        {renderStation(stationInfo)}
       </div>
     </div>
   );

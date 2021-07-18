@@ -22,9 +22,9 @@ const Train = ({ isLandscape, numCarraiges, numDoors, bestDoorIndex }: Props): R
             return (
               <div key={i} className="carraige">{
                 [...Array(numDoors)].map((door, j) => {
-                  const isBestDoor = ((i) * numDoors + j) === bestDoorIndex;
-                  // 0-index
-                  return <div key={`${(i) * numDoors + j}`} className={`door ${isBestDoor ? 'best' : ''}`} />;
+                  // 1-index
+                  const isBestDoor = (i) * numDoors + j + 1 === bestDoorIndex;
+                  return <div key={`${(i) * numDoors + j + 1}`} className={`door ${isBestDoor ? 'best' : ''}`} />;
                 })
               }
               </div>

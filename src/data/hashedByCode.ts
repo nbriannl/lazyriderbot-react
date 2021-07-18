@@ -1,6 +1,7 @@
 import { PlatformFeature } from '../components/MainDisplay/Platform';
 import { StationFeatureType } from '../constants/station';
 import { StationInfo } from '../typings/typings';
+import { getFlippedDoorIndex } from '../utils/utils';
 import { groupedByLine } from './grouped';
 
 /* eslint-disable max-lines */
@@ -138,7 +139,8 @@ export const hashedByCode: Record<string, Station> = {
       },
       {
         type: StationFeatureType.OtherTrain,
-        sameDirection: false
+        sameDirection: false,
+        bestDoorIndex: getFlippedDoorIndex(19, Line.NorthSouth)
       }
     ]
   },
@@ -149,7 +151,7 @@ export const hashedByCode: Record<string, Station> = {
     info: [
       {
         type: StationFeatureType.Train,
-        bestDoorIndex: 18
+        bestDoorIndex: 7
       },
       {
         type: StationFeatureType.Platform,
@@ -178,7 +180,8 @@ export const hashedByCode: Record<string, Station> = {
       },
       {
         type: StationFeatureType.OtherTrain,
-        sameDirection: false
+        sameDirection: false,
+        bestDoorIndex: getFlippedDoorIndex(7, Line.NorthSouth)
       }
     ]
   },
@@ -246,6 +249,7 @@ export const hashedByCode: Record<string, Station> = {
             distFromHead: doorDistance(8, Line.NorthSouth),
             features: [
               PlatformFeature.EscalatorExit,
+              // todo: uncomment
               PlatformFeature.EscalatorEntry
             ]
           },
@@ -260,7 +264,8 @@ export const hashedByCode: Record<string, Station> = {
       },
       {
         type: StationFeatureType.OtherTrain,
-        sameDirection: false
+        sameDirection: false,
+        bestDoorIndex: 17
       }
     ]
   },
@@ -359,7 +364,8 @@ export const hashedByCode: Record<string, Station> = {
       },
       {
         type: StationFeatureType.OtherTrain,
-        sameDirection: false
+        sameDirection: false,
+        bestDoorIndex: 24-8+1
       }
     ]
   },

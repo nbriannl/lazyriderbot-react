@@ -23,7 +23,6 @@ const Train = ({ isLandscape, numCarraiges, numDoors, bestDoorIndexes }: Props):
               <div key={i} className="carraige">{
                 [...Array(numDoors)].map((door, j) => {
                   // 1-index
-                  console.log('hey2', bestDoorIndexes);
                   const isBestDoor = bestDoorIndexes.includes((i) * numDoors + j + 1);
                   return <div key={`${(i) * numDoors + j + 1}`} className={`door ${isBestDoor ? 'best' : ''}`} />;
                 })

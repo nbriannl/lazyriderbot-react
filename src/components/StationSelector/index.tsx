@@ -80,8 +80,24 @@ const StationSelector = ({
     </div>
   );
 
+  const mapLineToCssClass = (line: Line): string => {
+    switch (line) {
+      case Line.NorthSouth:
+        return 'ns';
+      case Line.EastWest:
+        return 'ew';
+    }
+  };
+
+  const addAnAccent = () => {
+    if (endStation !== '') {
+      return mapLineToCssClass(hashedByCode[endStation].line as Line);
+    }
+    return '';
+  };
+
   return (
-    <div className="station-selector">
+    <div className={`station-selector ${addAnAccent()}`}>
       <div
         className={`btn column ${isMultiLocationMode ? 'multiloc' : 'singleloc'} `} onClick={() => setIsMultiLocationMode(!isMultiLocationMode)}
       >

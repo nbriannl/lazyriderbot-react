@@ -51,13 +51,20 @@ p {
 .station-selector {
   align-items: center;
   background-color: #004D55;
-  border-bottom: 5px solid #EF3829;
   color: #fff;
   display: flex;
   flex-direction: row;
   font-size: 1.4em;
   text-align: center;
   width: 100%;
+
+  &.ns {
+    border-bottom: 5px solid $color-ns;
+  }
+
+  &.ew {
+    border-bottom: 5px solid $color-ew;
+  }
 
   .station-input {
     align-items: center;

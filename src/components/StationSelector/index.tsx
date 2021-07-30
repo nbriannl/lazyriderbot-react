@@ -3,6 +3,8 @@ import { Dispatch, ReactElement, SetStateAction } from 'react';
 import { FcRotateToLandscape, FcRotateToPortrait } from 'react-icons/fc';
 import { HiOutlineSwitchVertical, HiOutlineSwitchHorizontal } from 'react-icons/hi';
 import { MdLocationOn } from 'react-icons/md';
+import { hashedByCode } from '../../data/hashedByCodeSource';
+import { Line, lineInfo } from '../../data/hashedByCode';
 import EndStationSelect from './EndStationSelect';
 import StartStationSelect from './StartStationSelect';
 
@@ -49,7 +51,11 @@ const StationSelector = ({
     <div className="station-input">
       <div className="options">
         <EndStationSelect endStationInput={endStation} setStation={setEndStation} placeholder="Destination" />
-        <p>Towards {direction ? 'Jurong East' : 'Marina South Pier'}</p>
+        {endStation &&
+          <p>Towards {direction ?
+            lineInfo(hashedByCode[endStation].line as Line).firstStation :
+            lineInfo(hashedByCode[endStation].line as Line).lastStation}
+          </p>}
       </div>
       <div
         className="btn" onClick={() => setDirection(!direction)}

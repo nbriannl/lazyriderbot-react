@@ -13,7 +13,8 @@ export interface Station {
 }
 
 export enum Line {
-  NorthSouth = 'North South Line'
+  NorthSouth = 'North South Line',
+  EastWest = 'East West Line'
 }
 
 export interface LineInfo {
@@ -26,6 +27,7 @@ export interface LineInfo {
 export const lineInfo = (line: Line): LineInfo => {
   switch (line) {
     case Line.NorthSouth:
+    case Line.EastWest:
     default:
       return {
         numCarraiges: 6,
@@ -487,12 +489,84 @@ export const hashedByCode: Record<string, Station> = {
   EW2: {
     code: 'EW2',
     name: 'Tampines',
-    line: 'East West Line'
+    line: 'East West Line',
+    info: [
+      {
+        type: StationFeatureType.Train,
+        bestDoorIndexes: [7, 18]
+      },
+      {
+        type: StationFeatureType.Platform,
+        platformInfo: [
+          {
+            distFromHead: doorDistance(7, Line.EastWest),
+            features: [
+              PlatformFeature.EscalatorEntry,
+              PlatformFeature.EscalatorExit
+            ]
+          },
+          {
+            distFromHead: doorDistance(14, Line.EastWest),
+            features: [
+              PlatformFeature.Elevator
+            ]
+          },
+          {
+            distFromHead: doorDistance(18, Line.EastWest),
+            features: [
+              PlatformFeature.EscalatorExit,
+              PlatformFeature.Stairs
+            ]
+          }
+        ]
+      },
+      {
+        type: StationFeatureType.OtherTrain,
+        sameDirection: false,
+        bestDoorIndexes: [7, 18]
+      }
+    ]
   },
   EW3: {
     code: 'EW3',
     name: 'Simei',
-    line: 'East West Line'
+    line: 'East West Line',
+    info: [
+      {
+        type: StationFeatureType.Train,
+        bestDoorIndexes: [18]
+      },
+      {
+        type: StationFeatureType.Platform,
+        platformInfo: [
+          {
+            distFromHead: doorDistance(8, Line.EastWest),
+            features: [
+              PlatformFeature.EscalatorEntry,
+              PlatformFeature.Stairs
+            ]
+          },
+          {
+            distFromHead: doorDistance(12, Line.EastWest),
+            features: [
+              PlatformFeature.Elevator
+            ]
+          },
+          {
+            distFromHead: doorDistance(18, Line.EastWest),
+            features: [
+              PlatformFeature.Stairs,
+              PlatformFeature.EscalatorExit
+            ]
+          }
+        ]
+      },
+      {
+        type: StationFeatureType.OtherTrain,
+        sameDirection: false,
+        bestDoorIndexes: [7]
+      }
+    ]
   },
   EW4: {
     code: 'EW4',
